@@ -36,9 +36,9 @@ if (!isset($_SESSION["user_id"])) {
                 </li>
 
                 <li>
-                    <a href="add_item/add_items.php">
+                    <a href="add_vote/add_vote.php">
                         <span class="icon"><i class="fas fa-plus"></i></span>
-                        <span class="item"> Add Items</span>
+                        <span class="item"> Add Vote</span>
                     </a>
                 </li>
 
