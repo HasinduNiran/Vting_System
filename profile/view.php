@@ -30,7 +30,7 @@ if (isset($_SESSION['user_id'])) {
     background-color: #f5f5f5;
     margin: 0;
     padding: 0;
-    background-image: url("pink-background-with-palm-tree.jpg");
+    background-image: url("profileBack.png");
 }
 
 .container {
@@ -126,7 +126,7 @@ a:hover{
     <a href="../dashboard.php">Home</a>
     <div class="detailscon">
     <?php if (isset($user)) : ?>
-        <h1>Welcome,<br> <?php echo $user['fname']; ?> <?php echo $user['lname']; ?></h1>
+        <h1>Welcome,<br> <?php echo $user['firstname']; ?> <?php echo $user['lastname']; ?></h1>
         <p>Email: <?php echo $user['email']; ?></p>
         <p>Phone: <?php echo $user['phone']; ?></p>
         <p>Password: <?php echo $user['password']; ?></p>
@@ -143,7 +143,7 @@ a:hover{
     </div>
     </div>
     <div class="imgcon">
-        <img src="pro.png" alt="" width="780px">
+        <!-- <img src="pro.png" alt="" width="780px"> -->
     </div>
    
 </body>

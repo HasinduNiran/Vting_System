@@ -11,16 +11,16 @@ if (!isset($_SESSION["user_id"])) {
 if (isset($_SESSION['user_id'])) {
     $userId = $_SESSION['user_id'];
     
-    if (isset($_POST['fname']) && isset($_POST['lname']) && isset($_POST['phone']) && isset($_POST['email'])) {
+    if (isset($_POST['firstname']) && isset($_POST['lastname']) && isset($_POST['email']) && isset($_POST['phone'])) {
         // Sanitize and validate user inputs
-        $fname = mysqli_real_escape_string($conn, $_POST['fname']);
-        $lname = mysqli_real_escape_string($conn, $_POST['lname']);
-        $phone = mysqli_real_escape_string($conn, $_POST['phone']);
+        $firstname = mysqli_real_escape_string($conn, $_POST['firstname']);
+        $lastname = mysqli_real_escape_string($conn, $_POST['lastname']);
         $email = mysqli_real_escape_string($conn, $_POST['email']);
+        $phone = mysqli_real_escape_string($conn, $_POST['phone']);
         $password = mysqli_real_escape_string($conn, $_POST['password']);
 
         // Update user details in the database
-        $query = "UPDATE `user` SET fname = '$fname', lname = '$lname', phone = '$phone', email = '$email', password = '$password' WHERE id = $userId";
+        $query = "UPDATE `user` SET firstname = '$firstname', lastname = '$lastname', phone = '$phone', email = '$email', password = '$password' WHERE id = $userId";
         $result = mysqli_query($conn, $query);
 
         if ($result) {
@@ -118,11 +118,11 @@ button:hover {
 }
 
 /* Styling for individual form fields */
-#fname {
+#firstname {
     background-color: #f9f9f9;
 }
 
-#lname {
+#lastname {
     background-color: #f9f9f9;
 }
 
@@ -134,7 +134,7 @@ button:hover {
     background-color: #f9f9f9;
 }
 
-#fname:focus, #lname:focus, #phone:focus, #email:focus {
+#firstname:focus, #lastname:focus, #phone:focus, #email:focus {
     background-color: #fff;
     border: 1px solid #007bff;
     outline: none;
@@ -156,11 +156,11 @@ body {
         <!-- Add a form to edit user details -->
         <form method="post" action="update.php">
             <!-- Input fields for editing user details with values from the database -->
-            <label for="fname">First Name:</label>
-            <input type="text" id="fname" name="fname" value="<?php echo $user['fname']; ?>" required>
+            <label for="firstname">First Name:</label>
+            <input type="text" id="firstname" name="firstname" value="<?php echo $user['firstname']; ?>" required>
 
-            <label for="lname">Last Name:</label>
-            <input type="text" id="lname" name="lname" value="<?php echo $user['lname']; ?>" required>
+            <label for="lastname">Last Name:</label>
+            <input type="text" id="lastname" name="lastname" value="<?php echo $user['lastname']; ?>" required>
 
             <label for="phone">Phone Number:</label>
             <input type="text" id="phone" name="phone" value="<?php echo $user['phone']; ?>" required>

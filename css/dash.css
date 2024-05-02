@@ -10,14 +10,14 @@
 body{
     width: 100%;
     height: 100vh;
-    background-image: url("../image/894204_O9HD520.jpg");
+    background-image: url("./../image/dashBack.png");
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
 }
 
 .wrapper .sidebar{
-    background: rgb(224, 152, 7);
+    background: rgb(106, 180, 240);
     position: fixed;
     top: 0;
     left: 0;
