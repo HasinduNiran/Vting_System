@@ -1,29 +1,40 @@
 <?php
+// Include the database connection file
 include 'dbh.php';
 
-
+// Initialize a variable to store error message
 $Invalid = "";
-if (isset($_POST['btnlogin'])) {
-    if (isset($_POST['btnlogin'])){
 
+// Check if the login form is submitted
+if (isset($_POST['btnlogin'])) {
+    // Check if the login button is clicked again (redundant check)
+    if (isset($_POST['btnlogin'])){
+        // Sanitize and store the entered email and password
         $email = mysqli_real_escape_string($conn,$_POST['user_email']);
         $pass = mysqli_real_escape_string($conn,$_POST['user_password']);
 
-        $select = mysqli_query($conn,"SELECT * from `user` WHERE email = '$email'
-        AND password = '$pass'");
+        // Query the database to select user with provided email and password
+        $select = mysqli_query($conn,"SELECT * from `user` WHERE email = '$email' AND password = '$pass'");
 
-    if (mysqli_num_rows($select) > 0) {
-        session_start();
-        $row = mysqli_fetch_assoc($select);
-        $_SESSION['user_id'] = $row['id'];
-        header('Location: dashboard.php');
-        exit;
-    } else {
-        $Invalid = "Invalid Email or Password!";
+        // Check if the query returns any row (user found)
+        if (mysqli_num_rows($select) > 0) {
+            // Start a session
+            session_start();
+            // Fetch the user row from the result
+            $row = mysqli_fetch_assoc($select);
+            // Store user's ID in session variable
+            $_SESSION['user_id'] = $row['id'];
+            // Redirect to dashboard page
+            header('Location: dashboard.php');
+            exit;
+        } else {
+            // Set error message for invalid email or password
+            $Invalid = "Invalid Email or Password!";
+        }
     }
 }
-}
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -33,7 +44,7 @@ if (isset($_POST['btnlogin'])) {
     <link rel = "stylesheet" href = "css/Login_SK.css">
     <link rel = "stylesheet" href = "css/homepage.css">
     <script src="https://kit.fontawesome.com/b3ca95fff7.js" crossorigin="anonymous"></script>
-    <title>Bizen/Login page</title>
+    <title>One shot/Login page</title>
 </head>
 <body>
 
