@@ -2,7 +2,7 @@
 
 $serverName="localhost:3309";
 $userName="admin2";
-$dbname="mysql";
+$dbname="voting";
 $dbpassword="1234";
 
 $conn=mysqli_connect($serverName,$userName,$dbpassword,$dbname);
