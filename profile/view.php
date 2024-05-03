@@ -119,15 +119,22 @@ a:hover{
     top: -50px;
     left: 600px;
 }
+img {
+    position: relative; /* Set the position of the image relative to its normal position */
+    left: 180px; /* Shift the image 20 pixels to the right */
+    top: 250px; /* Shift the image 10 pixels up */
+}
     </style>
 </head>
 <body>
 
-    <a href="../dashboard.php">Home</a>
+    
     <div class="detailscon">
     <?php if (isset($user)) : ?>
-        <h1>Welcome,<br> <?php echo $user['firstname']; ?> <?php echo $user['lastname']; ?></h1>
+        <h1>Welcome<br> </h1>
+        <p>Name: <?php echo $user['firstname']; ?> <?php echo $user['lastname']; ?></p>
         <p>Email: <?php echo $user['email']; ?></p>
+        <p>Birthday: <?php echo $user['dob']; ?></p>
         <p>Phone: <?php echo $user['phone']; ?></p>
         <p>Password: <?php echo $user['password']; ?></p>
         <!-- Add more details here as needed -->
@@ -143,7 +150,7 @@ a:hover{
     </div>
     </div>
     <div class="imgcon">
-        <!-- <img src="pro.png" alt="" width="780px"> -->
+        <img src="viewback.png" alt="" width="500px" >
     </div>
    
 </body>
