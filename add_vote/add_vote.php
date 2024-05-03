@@ -5,13 +5,13 @@
     <style>
         /* CSS for Vote Box */
         body {
-            background-image: url('3.jpg');
+            background-image: url('../image/d.png');
             background-size: cover;
             background-repeat: no-repeat;
             font-family: Arial, sans-serif;
             background-color: #f4f4f4;
             margin: 0;
-            padding: 0;
+            padding: 120px;
         }
 
         h1 {
@@ -48,6 +48,8 @@
 
         input[type="text"],
         input[type="email"],
+        input[type="tel"],
+        input[type="date"],
         textarea,
         select {
             width: 100%;
@@ -80,22 +82,49 @@
     </style>
 </head>
 <body>
+<header class="header">
+<link rel="stylesheet" href="../css/style.css">
+    <a href="#" class="logo">
+        <img src="../image/pngegg.png" alt="" width="150px" height="70px"> </a>
+
+    <nav class="navbar">
+        <a href="#">home</a>
+        <a href="#">Contact Us</a>
+    </nav>
+
+    <div id="menu-btn" class="fas fa-bars"></div>
+</header>
     
 
     <form action="add_vote.php" method="post" class="contact-form">
     <h1>Add New Vote</h1>
+        <label for="voter">Voter:</label>
+        <input type="text" id="voter" name="voter" required>
+
         <label for="candidate">Vote Number:</label>
         <select id="candidate" name="candidate" required>
-            <option value="candidate1"> 01</option>
-            <option value="candidate2"> 02</option>
-            <option value="candidate3"> 03</option>
-            <option value="candidate4"> 04</option>
-            <option value="candidate5"> 05</option>
+            <option value="1">01</option>
+            <option value="2">02</option>
+            <option value="3">03</option>
+            <option value="4">04</option>
+            <option value="5">05</option>
             <!-- Add more candidates as needed -->
         </select>
 
-        <!-- <label for="vote">Vote:</label>
-        <input type="checkbox" id="vote" name="vote" value="1"> -->
+        <label for="voteDate">Vote Date:</label>
+        <input type="date" id="voteDate" name="voteDate" required>
+
+        <label for="telephone">Telephone:</label>
+        <input type="tel" id="telephone" name="telephone" required>
+
+        <label for="comment">Comment:</label>
+        <textarea id="comment" name="comment"></textarea>
+
+        <label for="city">City:</label>
+        <input type="text" id="city" name="city" required>
+
+        <label for="vote">Vote:</label>
+        <input type="checkbox" id="vote" name="vote" value="1">
 
         <button type="submit" name="submit">Add Vote</button>
     </form>
@@ -105,24 +134,41 @@
 include '../dbh.php'; // Make sure to include your database connection here
 
 if (isset($_POST['submit'])) {
-    // Sanitize and validate input
-    $candidate = $_POST['candidate']; // Assuming you trust the values in the select box
-    $vote = isset($_POST['vote']) ? 1 : 0; // Check if the checkbox is checked
+    // Check if all required fields are set
+    if (
+        isset($_POST['voter']) && 
+        isset($_POST['candidate']) && 
+        isset($_POST['voteDate']) && 
+        isset($_POST['telephone']) && 
+        isset($_POST['city'])
+    ) {
+        // Sanitize and validate input
+        $voter = $_POST['voter'];
+        $candidate = $_POST['candidate'];
+        $voteDate = $_POST['voteDate'];
+        $telephone = $_POST['telephone'];
+        $comment = isset($_POST['comment']) ? $_POST['comment'] : null; // Comment is optional
+        $city = $_POST['city'];
+        $vote = isset($_POST['vote']) ? 1 : 0;
 
-    // Insert data into the database
-    $sql = "INSERT INTO vote (candidate, vote) VALUES (?, ?)";
-    $stmt = $conn->prepare($sql);
-    $stmt->bind_param("si", $candidate, $vote);
+        // Insert data into the database
+        $sql = "INSERT INTO vote (voter, candidate, voteDate, telephone, comment, city, vote) VALUES (?, ?, ?, ?, ?, ?, ?)";
+        $stmt = $conn->prepare($sql);
+        $stmt->bind_param("ssssssi", $voter, $candidate, $voteDate, $telephone, $comment, $city, $vote);
 
-    // Execute the statement
-    if ($stmt->execute()) {
-        echo "Vote added successfully!";
+        // Execute the statement
+        if ($stmt->execute()) {
+            echo "Vote added successfully!";
+        } else {
+            echo "Error: " . $sql . "<br>" . $conn->error;
+        }
+
+        // Close statement
+        $stmt->close();
     } else {
-        echo "Error: " . $sql . "<br>" . $conn->error;
+        // If required fields are not set, display an error message
+        echo "Please fill in all required fields.";
     }
-
-    // Close statement
-    $stmt->close();
 
     // Close connection
     $conn->close();

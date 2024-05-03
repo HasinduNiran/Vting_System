@@ -16,6 +16,16 @@
     <link rel="stylesheet" href="../css/viewcard.css">
       <!-- custom css file link  -->
       <link rel="stylesheet" href="../css/style.css">
+      <style>
+        body {
+            background-image: url('../image/dg.png'); /* Replace 'background.jpg' with your actual image file */
+            background-size: cover;
+            background-repeat: no-repeat;
+            font-family: Arial, sans-serif; /* Use your preferred font-family */
+            margin: 0;
+            padding: 0;
+        }
+    </style>
 </head>
 <body>
 <header class="header">

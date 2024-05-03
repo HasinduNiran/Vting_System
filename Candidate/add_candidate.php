@@ -60,6 +60,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<link rel="stylesheet" href="../css/style.css">
     <meta charset="UTF-8">
     <title>Add Candidate</title>
     <style>
@@ -72,6 +73,16 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
+body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 20px;
+            background-image: url('../image/dg.png');
+            background-size: cover;
+            background-repeat: no-repeat;
+            font-family: Arial, sans-serif;
+        }
 
 h1 {
     text-align: center;
@@ -130,6 +141,19 @@ button[type="submit"]:hover {
     </style>
 </head>
 <body>
+<header class="header">
+
+<a href="#" class="logo">
+    <img src="../image/pngegg.png" alt="" width="150px" height="70px"> </a>
+
+<nav class="navbar">
+    <a href="#">home</a>
+    <a href="#">Contact Us</a>
+</nav>
+
+<div id="menu-btn" class="fas fa-bars"></div>
+
+</header>
     <h1>Add Candidate</h1>
 
     <div class="container">
