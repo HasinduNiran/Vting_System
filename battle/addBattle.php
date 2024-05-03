@@ -73,6 +73,20 @@
         }
     </style>
 </head>
+<?php
+// Include the file that contains your database connection
+include '../dbh.php';
+
+// Fetch candidate data from the database
+$query = "SELECT name FROM candidate";
+$result = mysqli_query($conn, $query);
+
+// Check for errors
+if (!$result) {
+    die("Error retrieving candidates: " . mysqli_error($conn));
+}
+?>
+
 <body>
     <h1>Create Battle</h1>
 
@@ -87,10 +101,12 @@
                 <label for="player1">Player 1:</label>
                 <select id="player1" name="player1" required>
                     <option value="">Select Player 1</option>
-                    <!-- Add options for Player 1 -->
-                    <option value="Player 1 Option 1">Player 1 Option 1</option>
-                    <option value="Player 1 Option 2">Player 1 Option 2</option>
-                    <!-- Add more options as needed -->
+                    <?php
+                    // Dynamically populate player 1 options
+                    while ($row = mysqli_fetch_assoc($result)) {
+                        echo "<option value='" . $row['name'] . "'>" . $row['name'] . "</option>";
+                    }
+                    ?>
                 </select>
             </div>
 
@@ -98,10 +114,15 @@
                 <label for="player2">Player 2:</label>
                 <select id="player2" name="player2" required>
                     <option value="">Select Player 2</option>
-                    <!-- Add options for Player 2 -->
-                    <option value="Player 2 Option 1">Player 2 Option 1</option>
-                    <option value="Player 2 Option 2">Player 2 Option 2</option>
-                    <!-- Add more options as needed -->
+                    <?php
+                    // Reset data pointer back to the beginning
+                    mysqli_data_seek($result, 0);
+
+                    // Dynamically populate player 2 options
+                    while ($row = mysqli_fetch_assoc($result)) {
+                        echo "<option value='" . $row['name'] . "'>" . $row['name'] . "</option>";
+                    }
+                    ?>
                 </select>
             </div>
 
@@ -115,8 +136,8 @@
     </div>
 
     <?php
-    // Include the file that contains your database connection
-    include '../dbh.php';
+    // Free result set
+    mysqli_free_result($result);
 
     if (isset($_POST['submit'])) {
         // Retrieve form data and sanitize to prevent SQL injection
@@ -141,4 +162,5 @@
     }
     ?>
 </body>
+
 </html>

@@ -43,30 +43,16 @@ if (!isset($_SESSION["user_id"])) {
                 </li>
 
                 <li>
-                    <a href="add_item/items.php">
+                    <a href="Candidate/vote.php">
                         <span class="icon"><i class="fas fa-users"></i></span>
-                        <span class="item">View Items</span>
-                    </a>
-                </li>
-
-                <li>
-                    <a href="payment/addcard.php">
-                        <span class="icon"><i class="far fa-credit-card"></i></span>
-                        <span class="item">Add Payment</span>
-                    </a>
-                </li>
-
-                <li>
-                    <a href="feedback/add.php">
-                        <span class="icon"><i class="fas fa-trash"></i></span>
-                        <span class="item">Add Feedback</span>
+                        <span class="item">View Candidates</span>
                     </a>
                 </li>
 
                 <li>
                     <a href="Contact_us/contactUs.php">
-                        <span class="icon"><i class="far fa-credit-card"></i></span>
-                        <span class="item">Contact Us</span>
+                        <span class="icon"><i class="fas fa-trash"></i></span>
+                        <span class="item">Add Feedback</span>
                     </a>
                 </li>
 
