@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Contact Details</title>
+    <title>Feedback Details</title>
     <style>
         /* Reset default browser styles */
         * {
@@ -75,7 +75,7 @@
 </head>
 <body>
     <a href="../dashboard.php">Home</a>
-    <h1>Contact Details</h1>
+    <h1>Feedback Details</h1>
     
     <table>
         <tr>

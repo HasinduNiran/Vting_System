@@ -70,7 +70,7 @@
     </style>
 </head>
 <body>
-    <a href="../dashboard.php">Home</a>
+    <a href="../adminDashboard.php">Home</a>
     <h1>Battle Details</h1>
     
     <table>

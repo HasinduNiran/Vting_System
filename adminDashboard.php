@@ -58,12 +58,7 @@ if (!isset($_SESSION["user_id"])) {
                     </a>
                 </li>
 
-                <li>
-                    <a href="profile/view.php">
-                        <span class="icon"><i class="fas fa-address-book"></i></span>
-                        <span class="item">My Profile</span>
-                    </a>
-                </li>
+                
                 <li>
                     <a href="logout.php">
                         <span class="icon"><i class="fas fa-address-book"></i></span>

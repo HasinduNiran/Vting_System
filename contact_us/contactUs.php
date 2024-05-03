@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Contact Us</title>
+    <title>Feedback</title>
     <<style>
         * {
     margin: 0;
@@ -81,7 +81,7 @@ button[type="submit"]:hover {
     </style>
 </head>
 <body>
-    <h1>Contact Us</h1>
+    <h1>Feedback</h1>
 
     <div class="contact-form">
         <form action="contactUs.php" method="post">

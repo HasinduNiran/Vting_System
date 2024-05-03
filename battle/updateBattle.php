@@ -88,6 +88,10 @@
         $row = mysqli_fetch_assoc($result);
 
         if ($row) {
+            // Fetch player names for dropdown options
+            $playersQuery = "SELECT name FROM candidate"; 
+            $playersResult = mysqli_query($conn, $playersQuery);
+
             echo '<form action="updateBattle.php" method="post" class="contact-form">
                 <input type="hidden" name="battle_id" value="' . $row['id'] . '">
                 <div class="form-group">
@@ -97,12 +101,30 @@
 
                 <div class="form-group">
                     <label for="player1">Player 1:</label>
-                    <input type="text" id="player1" name="player1" value="' . $row['player1'] . '" required>
+                    <select id="player1" name="player1" required>';
+                        while ($player = mysqli_fetch_assoc($playersResult)) {
+                            echo '<option value="' . $player['name'] . '"';
+                            if ($row['player1'] == $player['name']) {
+                                echo ' selected';
+                            }
+                            echo '>' . $player['name'] . '</option>';
+                        }
+            echo '</select>
                 </div>
 
                 <div class="form-group">
                     <label for="player2">Player 2:</label>
-                    <input type="text" id="player2" name="player2" value="' . $row['player2'] . '" required>
+                    <select id="player2" name="player2" required>';
+                        // Reset the pointer of $playersResult
+                        mysqli_data_seek($playersResult, 0);
+                        while ($player = mysqli_fetch_assoc($playersResult)) {
+                            echo '<option value="' . $player['name'] . '"';
+                            if ($row['player2'] == $player['name']) {
+                                echo ' selected';
+                            }
+                            echo '>' . $player['name'] . '</option>';
+                        }
+            echo '</select>
                 </div>
 
                 <div class="form-group">
@@ -141,4 +163,5 @@
     }
     ?>
 </body>
+
 </html>
