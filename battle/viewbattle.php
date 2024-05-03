@@ -18,7 +18,7 @@
         }
 
         h1 {
-            background-color: orangered;
+            background-color: #168382;
             width: 50%;
             height: 100px;
 
@@ -54,7 +54,7 @@
             display: inline-block;
             padding: 8px 16px;
             margin: 5px;
-            background-color: red;
+            background-color: #0DE23A;
             color: #fff;
             text-decoration: none;
             border-radius: 5px;
@@ -65,11 +65,7 @@
         }
 
         /* Optional: Add a background image or texture */
-        body {
-            background-image: url('3.jpg');
-            background-size: cover;
-            background-repeat: no-repeat;
-        }
+        
 
     </style>
 </head>
