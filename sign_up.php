@@ -6,12 +6,13 @@ if (isset($_POST["submit"])) { // Check if the form is submitted
     $lastname = $_POST["lastname"];
     $email = $_POST["email"];
     $phone = $_POST["phone"];
+    $dob = $_POST["dob"];
     $password = $_POST["password"];
     $confirmpassword = $_POST["confirmpassword"];
 
     if ($password == $confirmpassword) { // Check if passwords match
         // SQL query to insert data into database
-        $query = "INSERT INTO `user` (firstname, lastname, email, phone, password) VALUES ('$firstname', '$lastname', '$email', '$phone',  '$password')";
+        $query = "INSERT INTO `user` (firstname, lastname,dob, email, phone, password) VALUES ('$firstname', '$lastname','$dob', '$email', '$phone',  '$password')";
         $result = mysqli_query($conn, $query); // Execute the query
         $success = "<script>alert('Registration Successful');</script>"; // Set success message
         // Redirect user to login page after successful registration
@@ -50,6 +51,9 @@ if (isset($_POST["submit"])) { // Check if the form is submitted
 
             <label>Last Name</label><br>
             <input type="text" placeholder="Last Name" name="lastname"><br><br>
+
+            <label>Date of Birthday</label><br>
+            <input type="date" placeholder="Birthday" name="dob"><br><br>
 
             <label>Telephone No</label><br>
             <input type="text" placeholder="077-1234567" name="phone"><br><br>
