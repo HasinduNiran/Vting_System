@@ -105,8 +105,18 @@ if (mysqli_num_rows($result_existing) > 0) {
 .container {
     max-width: 600px;
     margin: 0 auto;
-    padding: 20px;
+    padding: 150px;
 }
+body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 20px;
+            background-image: url('../image/dg.png');
+            background-size: cover;
+            background-repeat: no-repeat;
+            font-family: Arial, sans-serif;
+        }
 
 h1 {
     text-align: center;
@@ -164,6 +174,20 @@ button[type="submit"]:hover {
 </head>
 
 <body>
+<link rel="stylesheet" href="../css/style.css">
+<header class="header">
+
+<a href="#" class="logo">
+    <img src="../image/pngegg.png" alt="" width="150px" height="70px"> </a>
+
+<nav class="navbar">
+    <a href="#">home</a>
+    <a href="#">Contact Us</a>
+</nav>
+
+<div id="menu-btn" class="fas fa-bars"></div>
+
+</header>
     <div class="container">
         <h1>Update Candidate</h1>
 

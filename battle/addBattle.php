@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<link rel="stylesheet" href="../css/style.css">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Create Battle</title>
@@ -88,6 +89,19 @@ if (!$result) {
 ?>
 
 <body>
+<header class="header">
+
+<a href="#" class="logo">
+    <img src="../image/pngegg.png" alt="" width="150px" height="70px"> </a>
+
+<nav class="navbar">
+    <a href="#">home</a>
+    <a href="#">Contact Us</a>
+</nav>
+
+<div id="menu-btn" class="fas fa-bars"></div>
+
+</header>
     <h1>Create Battle</h1>
 
     <div class="contact-form">
