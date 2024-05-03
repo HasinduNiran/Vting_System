@@ -43,7 +43,7 @@ if (!isset($_SESSION["user_id"])) {
                 </li>
 
                 <li>
-                    <a href="add_item/items.php">
+                    <a href="Candidate/add_candidate.php">
                         <span class="icon"><i class="fas fa-users"></i></span>
                         <span class="item">Create Candidates</span>
                     </a>
@@ -52,9 +52,9 @@ if (!isset($_SESSION["user_id"])) {
                 
 
                 <li>
-                    <a href="contact_us/viewc.php">
+                    <a href="Candidate/view_candidate.php">
                         <span class="icon"><i class="fas fa-trash"></i></span>
-                        <span class="item">View Feedback</span>
+                        <span class="item">View Candidates</span>
                     </a>
                 </li>
 

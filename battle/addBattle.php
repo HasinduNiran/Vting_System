@@ -1,83 +1,76 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Battle</title>
-    <<style>
-        * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Battle</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Sora:wght@600&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@700&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap');
 
-body {
-    background-image: url('3.jpg');
-    background-size: cover;
-    background-repeat: no-repeat;
-    font-family: Arial, sans-serif;
-    background-color: #f4f4f4;
-    margin: 0;
-    padding: 0;
-}
+        body {
+            background-image: url("battleBack.png");
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-position: center;
+            background-size: cover;
+        }
 
-h1 {
-    
-    text-align: center;
-    margin: 20px 0;
-    background-color: white;
-    width: 60%;
-    height: 50px;
-    border-radius: 8px;
-    margin-left: 270px;
-}
+        .contact-form {
+            width: 90%;
+            max-width: 450px;
+            position: absolute;
+            top: 50%; /* Adjust the vertical position of the form */
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: rgba(255, 255, 255, 0.9); /* Set background color with opacity */
+            border-radius: 10px;
+            padding: 50px 60px 70px;
+            box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.2); /* Add shadow to the border */
+        }
 
-.contact-form {
-    width: 70%;
-    max-width: 600px;
-    margin: 0 auto;
-    background-color: #fff;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-}
+        .form-group {
+            margin-bottom: 20px; /* Adjust spacing between input fields */
+        }
 
-.form-group {
-    margin: 10px 0;
-}
+        label {
+            font-weight: bold;
+            display: block;
+        }
 
-label {
-    display: block;
-    font-weight: bold;
-    color: #333;
-}
+        input, select, textarea {
+            padding: 15px 10px;
+            width: calc(100% - 20px); /* Adjust width to fit the container */
+            font-family: 'Poppins', sans-serif;
+            border-radius: 10px;
+            border-style: none;
+            background-color: rgb(145, 205, 207);
+        }
 
-input[type="text"],
-input[type="email"],
-textarea {
-    width: 100%;
-    padding: 10px;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-    font-size: 16px;
-}
+        button {
+            margin: 10px 0;
+            padding: 15px;
+            width: calc(100% - 20px); /* Adjust width to fit the container */
+            background-color: rgb(61, 150, 202);
+            border-style: none;
+            border-radius: 20px;
+            font-size: 15px;
+            color: aliceblue;
+            font-family: 'Poppins', sans-serif;
+            transition: color 0.3s ease, background-color 0.3s ease;
+        }
 
-textarea {
-    resize: vertical;
-}
+        button:hover {
+            color: rgb(20, 129, 192);
+            background-color: rgb(237, 237, 237);
+        }
 
-button[type="submit"] {
-    background-color: #007bff;
-    color: #fff;
-    border: none;
-    border-radius: 4px;
-    padding: 10px 20px;
-    font-size: 16px;
-    cursor: pointer;
-}
-
-button[type="submit"]:hover {
-    background-color: #0056b3;
-}
-
+        h1 {
+            text-align: center;
+            text-decoration: underline;
+            margin-bottom: 20px;
+        }
     </style>
 </head>
 <body>
@@ -113,37 +106,39 @@ button[type="submit"]:hover {
             </div>
 
             <div class="form-group">
-                <label for="Description">Description:</label>
+                <label for="description">Description:</label>
                 <textarea id="description" name="description" rows="4" required></textarea>
             </div>
 
             <button type="submit" name="submit">Submit</button>
         </form>
     </div>
+
+    <?php
+    // Include the file that contains your database connection
+    include '../dbh.php';
+
+    if (isset($_POST['submit'])) {
+        // Retrieve form data and sanitize to prevent SQL injection
+        $name = mysqli_real_escape_string($conn, $_POST['name']);
+        $player1 = mysqli_real_escape_string($conn, $_POST['player1']);
+        $player2 = mysqli_real_escape_string($conn, $_POST['player2']);
+        $description = mysqli_real_escape_string($conn, $_POST['description']);
+
+        // SQL query to insert battle details into the database
+        $sql = "INSERT INTO `battle` (`name`, `player1`, `player2`, `description`) VALUES ('$name', '$player1', '$player2', '$description')";
+
+        // Execute the SQL query
+        if (mysqli_query($conn, $sql)) {
+            echo '<script type="text/javascript">
+            window.onload = function () { alert("Battle details saved successfully!"); 
+                window.location.href = "viewbattle.php";}
+            </script>'; // Redirect to viewbattle.php after successful insertion
+            exit;
+        } else {
+            echo "Error: " . $sql . "<br>" . mysqli_error($conn);
+        }
+    }
+    ?>
 </body>
 </html>
-
-<?php
-// Include the file that contains your database connection
-include '../dbh.php';
-
-if (isset($_POST['submit'])) {
-    // Retrieve form data and sanitize to prevent SQL injection
-    $name = mysqli_real_escape_string($conn, $_POST['name']);
-    $player1 = mysqli_real_escape_string($conn, $_POST['player1']);
-    $player2 = mysqli_real_escape_string($conn, $_POST['player2']);
-    $description = mysqli_real_escape_string($conn, $_POST['description']);
-
-    // SQL query to insert battle details into the database
-    $sql = "INSERT INTO `battle` (`name`, `player1`, `player2`, `description`) VALUES ('$name', '$player1', '$player2', '$description')";
-
-    // Execute the SQL query
-    if (mysqli_query($conn, $sql)) {
-        // Redirect to another page after successful insertion
-        header("Location: viewbattle.php");
-        exit(); // Make sure to exit after redirection
-    } else {
-        echo "Error: " . $sql . "<br>" . mysqli_error($conn);
-    }
-}
-?>

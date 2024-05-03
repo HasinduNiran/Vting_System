@@ -124,28 +124,29 @@
             echo 'Battle entry not found.';
         }
     }
+    ?>
+
     <?php
-include '../dbh.php';
-if (isset($_POST['submit'])) {
-    $id = $_POST['feedback_id'];
-    $name = $_POST['name'];
-    $email = $_POST['email'];
-    $msg = $_POST['message'];
-    
+    include '../dbh.php';
+    if (isset($_POST['submit'])) {
+        $id = $_POST['battle_id'];
+        $name = mysqli_real_escape_string($conn, $_POST['name']);
+        $player1 = mysqli_real_escape_string($conn, $_POST['player1']);
+        $player2 = mysqli_real_escape_string($conn, $_POST['player2']);
+        $description = mysqli_real_escape_string($conn, $_POST['description']);
 
-    $sql = "UPDATE battle SET name='$name', email='$player1', message='$msg' WHERE id=$id";
-    $result = mysqli_query($conn, $sql);
+        $sql = "UPDATE battle SET name='$name', player1='$player1', player2='$player2', description='$description' WHERE id=$id";
+        $result = mysqli_query($conn, $sql);
 
-    if ($result) {
-        echo '<script type="text/javascript">
-        window.onload = function () { alert("Data Updated !"); 
-            window.location.href = "viewc.php";}
-        </script>';
-    } else {
-        echo "Failed";
+        if ($result) {
+            echo '<script type="text/javascript">
+            alert("Data Updated!");
+            window.location.href = "viewbattle.php";
+            </script>';
+        } else {
+            echo "Failed";
+        }
     }
-}
-?>
     ?>
 </body>
 </html>

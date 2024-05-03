@@ -106,7 +106,7 @@
                 echo '<td>' . $row['description'] . '</td>';
                 echo '<td>
                         <a href="updateBattle.php?id=' . $row['id'] . '">Update</a> |
-                        <a href="deletec.php?id=' . $row['id'] . '">Delete</a>
+                        <a href="deleteBattle.php?id=' . $row['id'] . '">Delete</a>
                       </td>';
                 echo '</tr>';
             }
