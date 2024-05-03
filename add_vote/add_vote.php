@@ -101,3 +101,30 @@
     </form>
 </body>
 </html>
+<?php
+include '../dbh.php'; // Make sure to include your database connection here
+
+if (isset($_POST['submit'])) {
+    // Sanitize and validate input
+    $candidate = $_POST['candidate']; // Assuming you trust the values in the select box
+    $vote = isset($_POST['vote']) ? 1 : 0; // Check if the checkbox is checked
+
+    // Insert data into the database
+    $sql = "INSERT INTO vote (candidate, vote) VALUES (?, ?)";
+    $stmt = $conn->prepare($sql);
+    $stmt->bind_param("si", $candidate, $vote);
+
+    // Execute the statement
+    if ($stmt->execute()) {
+        echo "Vote added successfully!";
+    } else {
+        echo "Error: " . $sql . "<br>" . $conn->error;
+    }
+
+    // Close statement
+    $stmt->close();
+
+    // Close connection
+    $conn->close();
+}
+?>

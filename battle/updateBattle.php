@@ -3,82 +3,74 @@
 <head>
     <title>Update Battle</title>
     <style>
-        /* Reset default browser styles */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+    @import url('https://fonts.googleapis.com/css2?family=Sora:wght@600&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@700&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap');
 
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f4f4f4;
-            margin: 0;
-            padding: 0;
-        }
+    body {
+        background-image: url("battleBack.png");
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        background-position: center;
+        background-size: cover;
+    }
 
-        h1 {
-            text-align: center;
-            margin: 20px 0;
-            color: #333;
-        }
+    .contact-form {
+        width: 90%;
+        max-width: 450px;
+        position: absolute;
+        top: 50%; /* Adjust the vertical position of the form */
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background-color: rgba(255, 255, 255, 0.9); /* Set background color with opacity */
+        border-radius: 10px;
+        padding: 50px 60px 70px;
+        box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.2); /* Add shadow to the border */
+    }
 
-        form {
-            width: 70%;
-            max-width: 600px;
-            margin: 0 auto;
-            background-color: #fff;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-        }
+    .form-group {
+        margin-bottom: 20px; /* Adjust spacing between input fields */
+    }
 
-        .form-group {
-            margin: 10px 0;
-        }
+    label {
+        font-weight: bold;
+        display: block;
+    }
 
-        label {
-            display: block;
-            font-weight: bold;
-            color: #333;
-        }
+    input, select, textarea {
+        padding: 15px 10px;
+        width: calc(100% - 20px); /* Adjust width to fit the container */
+        font-family: 'Poppins', sans-serif;
+        border-radius: 10px;
+        border-style: none;
+        background-color: rgb(145, 205, 207);
+    }
 
-        input[type="text"],
-        select,
-        textarea {
-            width: 100%;
-            padding: 10px;
-            border: 1px solid #ddd;
-            border-radius: 4px;
-            font-size: 16px;
-        }
+    button {
+        margin: 10px 0;
+        padding: 15px;
+        width: calc(100% - 20px); /* Adjust width to fit the container */
+        background-color: rgb(61, 150, 202);
+        border-style: none;
+        border-radius: 20px;
+        font-size: 15px;
+        color: aliceblue;
+        font-family: 'Poppins', sans-serif;
+        transition: color 0.3s ease, background-color 0.3s ease;
+    }
 
-        textarea {
-            resize: vertical;
-        }
+    button:hover {
+        color: rgb(20, 129, 192);
+        background-color: rgb(237, 237, 237);
+    }
 
-        button[type="submit"] {
-            background-color: #007bff;
-            color: #fff;
-            border: none;
-            border-radius: 4px;
-            padding: 10px 20px;
-            font-size: 16px;
-            cursor: pointer;
-        }
+    h1 {
+        text-align: center;
+        text-decoration: underline;
+        margin-bottom: 20px;
+    }
+</style>
 
-        button[type="submit"]:hover {
-            background-color: #0056b3;
-        }
-
-        /* Optional: Add a background image or texture */
-        body {
-            background-image: url('3.jpg');
-            background-size: cover;
-            background-repeat: no-repeat;
-        }
-
-    </style>
 </head>
 <body>
     <h1>Update Battle</h1>
@@ -96,7 +88,7 @@
         $row = mysqli_fetch_assoc($result);
 
         if ($row) {
-            echo '<form action="updateBattle.php" method="post">
+            echo '<form action="updateBattle.php" method="post" class="contact-form">
                 <input type="hidden" name="battle_id" value="' . $row['id'] . '">
                 <div class="form-group">
                     <label for="name">Battle Name:</label>
