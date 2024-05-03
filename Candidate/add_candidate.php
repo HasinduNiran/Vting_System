@@ -1,60 +1,57 @@
 <?php
-//include db
+// Include your database connection file (e.g., dbh.php)
 include '../dbh.php';
 
-// Check if the form is submitted
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     // Retrieve form data
-    $name = $_POST['name'];
-    $age = $_POST['age'];
-    $dob = $_POST['dob'];
-    $villege = $_POST['villege'];
-    $votenumber = $_POST['votenumber'];
-    $performance = $_POST['perfomance']; // corrected variable name
+    $name = mysqli_real_escape_string($conn, $_POST['name']);
+    $age = intval($_POST['age']);
+    $dob = mysqli_real_escape_string($conn, $_POST['dob']);
+    $villege = mysqli_real_escape_string($conn, $_POST['villege']);
+    $votenumber = intval($_POST['votenumber']);
+    $perfomance = mysqli_real_escape_string($conn, $_POST['perfomance']); // corrected variable name
 
-    // Handle image upload
-    $targetDir = "C:/xampp/htdocs/Vting_System/Candidate/uploads";
-    
-    $targetFile = $targetDir . basename($_FILES["photo"]["name"]);
-    $uploadOk = 1;
-    $imageFileType = strtolower(pathinfo($targetFile, PATHINFO_EXTENSION));
+    // Check if a file was uploaded
+    if (isset($_FILES['photo'])) {
+        $file = $_FILES['photo'];
 
-    // Check if image file is a actual image or fake image
-    $check = getimagesize($_FILES["photo"]["tmp_name"]);
-    if ($check !== false) {
-        $uploadOk = 1;
-    } else {
-        echo "File is not an image.";
-        $uploadOk = 0;
-    }
+        // Check if the file is an image
+        if (getimagesize($file['tmp_name'])) {
+            // Generate a unique filename
+            $image_filename = uniqid() . '_' . $file['name'];
 
-    // Check file size
-    if ($_FILES["photo"]["size"] > 500000) {
-        echo "Sorry, your file is too large.";
-        $uploadOk = 0;
-    }
+            // Define the upload path
+            $upload_path = 'uploads/' . $image_filename; // Change 'uploads/' to your desired directory
 
-    // Allow certain file formats
-    if ($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg" && $imageFileType != "gif") {
-        echo "Sorry, only JPG, JPEG, PNG & GIF files are allowed.";
-        $uploadOk = 0;
-    }
+            // Move the uploaded file to the specified directory
+            if (move_uploaded_file($file['tmp_name'], $upload_path)) {
+                // Insert data into the database
+                $insert_query = "INSERT INTO candidate (name, age, dob, villege, votenumber, perfomance, photo) 
+                    VALUES ('$name', $age, '$dob', '$villege', $votenumber, '$perfomance', '$upload_path')";
 
-    // Check if $uploadOk is set to 0 by an error
-    if ($uploadOk == 0) {
-        echo "Sorry, your file was not uploaded.";
-    } else {
-        if (move_uploaded_file($_FILES["photo"]["tmp_name"], $targetFile)) {
-            // Insert data into the database
-            $sql = "INSERT INTO candidate (name, age,dob,villege, votenumber, perfomance, photo) 
-                    VALUES ('$name', '$age','$dob','$villege', '$votenumber', '$performance', '$targetFile')";
-            if (mysqli_query($conn, $sql)) {
-                echo "Candidate added successfully.";
+                if (mysqli_query($conn, $insert_query)) {
+                    // Candidate added successfully
+                    echo '<script type="text/javascript">
+                            window.onload = function () { 
+                                alert("Candidate Added!"); 
+                                window.location.href = "view_candidate.php";
+                            }
+                        </script>'; // Redirect to view_candidate.php
+                    exit;
+                } else {
+                    // Database insertion failed
+                    header('Location: error_page.php'); // Redirect to an error page
+                    exit;
+                }
             } else {
-                echo "Error: " . mysqli_error($conn);
+                // File upload failed
+                header('Location: error_page.php'); // Redirect to an error page
+                exit;
             }
         } else {
-            echo "Sorry, there was an error uploading your file.";
+            // The uploaded file is not an image
+            header('Location: error_page.php'); // Redirect to an error page
+            exit;
         }
     }
 }
@@ -65,26 +62,99 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <head>
     <meta charset="UTF-8">
     <title>Add Candidate</title>
-    <link rel="stylesheet" href="style.css">
+    <style>
+       /* CSS for Update Candidate Form */
+.container {
+    max-width: 600px;
+    margin: 50px auto;
+    padding: 20px;
+    background-color: #f8f9fa;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+form {
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+label {
+    font-weight: bold;
+    margin-bottom: 10px;
+    display: block;
+    color: #333;
+}
+
+input[type="text"],
+input[type="number"],
+input[type="date"],
+textarea {
+    width: calc(100% - 22px);
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+img {
+    display: block;
+    margin-bottom: 10px;
+    max-width: 100%;
+    height: auto;
+    border-radius: 5px;
+}
+
+button[type="submit"] {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    font-size: 18px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button[type="submit"]:hover {
+    background-color: #0056b3;
+}
+    </style>
 </head>
 <body>
+    <h1>Add Candidate</h1>
+
     <div class="container">
-        <h1>Add Candidate</h1>
         <form action="add_candidate.php" method="post" enctype="multipart/form-data">
-            <label for="name">Name</label>
-            <input type="text" name="name" id="name" required>
-            <label for="age">Age</label>
-            <input type="number" name="age" id="age" required>
-            <label for="dob">Date of Birth</label>
-            <input type="date" name="dob" id="dob" required >
-            <label for="villege">Villege</label>
-            <input type="text" name="villege" id="villege" required>
-            <label for="votenumber">Vote Number</label>
-            <input type="number" name="votenumber" id="votenumber" required>
-            <label for="perfomance">Performance</label>
-            <input type="text" name="perfomance" id="perfomance" required>
-            <label for="photo">Profile Image</label>
-            <input type="file" name="photo" id="photo" accept="image/*" required>
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" required>
+
+            <label for="age">Age:</label>
+            <input type="number" id="age" name="age" required>
+
+            <label for="dob">Date of Birth:</label>
+            <input type="date" id="dob" name="dob" required>
+
+            <label for="villege">Village:</label>
+            <input type="text" id="villege" name="villege" required>
+
+            <label for="votenumber">Vote Number:</label>
+            <input type="number" id="votenumber" name="votenumber" required>
+
+            <label for="perfomance">perfomance:</label>
+            <input type="text" id="perfomance" name="perfomance" required>
+
+            <label for="photo">Profile Image:</label>
+            <input type="file" id="photo" name="photo" accept="image/*" required><br><br>
+
             <button type="submit">Add Candidate</button>
         </form>
     </div>
