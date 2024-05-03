@@ -157,11 +157,14 @@ if (isset($_POST['submit'])) {
         $stmt->bind_param("ssssssi", $voter, $candidate, $voteDate, $telephone, $comment, $city, $vote);
 
         // Execute the statement
-        if ($stmt->execute()) {
-            echo "Vote added successfully!";
-        } else {
-            echo "Error: " . $sql . "<br>" . $conn->error;
-        }
+        // Execute the statement
+if ($stmt->execute()) {
+    echo "Vote added successfully!";
+    header("Location: ../dashboard.php"); // Redirect to dashboard.php
+} else {
+    echo "Error: " . $sql . "<br>" . $conn->error;
+}
+
 
         // Close statement
         $stmt->close();

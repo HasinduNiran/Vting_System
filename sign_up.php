@@ -10,15 +10,24 @@ if (isset($_POST["submit"])) { // Check if the form is submitted
     $password = $_POST["password"];
     $confirmpassword = $_POST["confirmpassword"];
 
-    if ($password == $confirmpassword) { // Check if passwords match
+    // Validations
+    if (empty($firstname) || empty($lastname) || empty($email) || empty($phone) || empty($dob) || empty($password) || empty($confirmpassword)) {
+        $success = "Please fill in all fields.";
+    } elseif (!preg_match("/^[a-zA-Z]+$/", $firstname) || !preg_match("/^[a-zA-Z]+$/", $lastname)) {
+        $success = "First name and last name should contain only letters.";
+    } elseif (strtotime($dob) >= time()) {
+        $success = "Please enter a valid date of birth.";
+    } elseif (!preg_match("/^\d{10}$/", $phone)) {
+        $success = "Phone number should be 10 digits.";
+    } elseif ($password !== $confirmpassword) {
+        $success = "Passwords do not match.";
+    } else {
         // SQL query to insert data into database
-        $query = "INSERT INTO `user` (firstname, lastname,dob, email, phone, password) VALUES ('$firstname', '$lastname','$dob', '$email', '$phone',  '$password')";
+        $query = "INSERT INTO `user` (firstname, lastname, dob, email, phone, password) VALUES ('$firstname', '$lastname', '$dob', '$email', '$phone',  '$password')";
         $result = mysqli_query($conn, $query); // Execute the query
         $success = "<script>alert('Registration Successful');</script>"; // Set success message
         // Redirect user to login page after successful registration
         header('Location: login.php');
-    } else {
-        $success = "Password Does Not Match"; // Set error message if passwords don't match
     }
 }
 
@@ -62,10 +71,10 @@ if (isset($_POST["submit"])) { // Check if the form is submitted
             <input type="email" placeholder="example@email.com" name="email"><br><br>
 
             <label>Password</label><br>
-            <input type="password" placeholder="********" name="password"><br><br>
+            <input type="password" placeholder="********" name="password" id="password"><br><br>
 
             <label>Confirm Password</label><br>
-            <input type="password" placeholder="********" name="confirmpassword"><br><br>
+            <input type="password" placeholder="********" name="confirmpassword" id="confirmPassword"><br><br>
 
             <button type="submit" name="submit">Submit</button>
         </form>
@@ -75,11 +84,19 @@ if (isset($_POST["submit"])) { // Check if the form is submitted
             document.getElementById("registrationForm").addEventListener("submit", function(event) {
                 var password = document.getElementById("password").value;
                 var confirmPassword = document.getElementById("confirmPassword").value;
+                var firstName = document.getElementsByName("firstname")[0].value;
+                var lastName = document.getElementsByName("lastname")[0].value;
+                var dob = document.getElementsByName("dob")[0].value;
+                var phone = document.getElementsByName("phone")[0].value;
+                var email = document.getElementsByName("email")[0].value;
 
-                if (password !== confirmPassword) {
+                if (!firstName || !lastName || !dob || !phone || !email || !password || !confirmPassword) {
+                    // Display an alert if any field is empty
+                    alert("Please fill in all fields.");
+                    event.preventDefault(); // Prevent the form from submitting
+                } else if (password !== confirmPassword) {
                     // Display an alert if passwords do not match
                     alert("Passwords do not match.");
-                    window.location.href = "addadmin.php";
                     event.preventDefault(); // Prevent the form from submitting
                 }
             });

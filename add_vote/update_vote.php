@@ -2,14 +2,14 @@
 
 include '../dbh.php';
 
-if($_SERVER['REQUEST_METHOD'] === 'GET' && isset($_GET['id'])) {
+if ($_SERVER['REQUEST_METHOD'] === 'GET' && isset($_GET['id'])) {
     $id = $_GET['id'];
 
     $query = "SELECT * FROM vote WHERE id = $id";
     $result = mysqli_query($conn, $query);
     $row = mysqli_fetch_assoc($result);
 
-    if($row) {
+    if ($row) {
         echo '<!DOCTYPE html>
 <html>
 <head>
@@ -104,13 +104,8 @@ if($_SERVER['REQUEST_METHOD'] === 'GET' && isset($_GET['id'])) {
         </div>
         <div class="form-group">
             <label for="candidate">Vote Number:</label>
-            <select id="candidate" name="candidate" required>
-                <option value="1" ' . ($row['candidate'] == 'candidate1' ? 'selected' : '') . '>01</option>
-                <option value="2" ' . ($row['candidate'] == 'candidate2' ? 'selected' : '') . '>02</option>
-                <option value="3" ' . ($row['candidate'] == 'candidate3' ? 'selected' : '') . '>03</option>
-                <option value="4" ' . ($row['candidate'] == 'candidate4' ? 'selected' : '') . '>04</option>
-                <option value="5" ' . ($row['candidate'] == 'candidate5' ? 'selected' : '') . '>05</option>
-            </select>
+            <input type="hidden" name="candidate" value="' . $row['candidate'] . '">
+            <span>' . $row['candidate'] . '</span>
         </div>
         <div class="form-group">
             <label for="voteDate">Vote Date:</label>
@@ -141,20 +136,21 @@ if($_SERVER['REQUEST_METHOD'] === 'GET' && isset($_GET['id'])) {
     }
 }
 
-if($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['vote_id'])) {
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['vote_id'])) {
     $id = $_POST['vote_id'];
     $voter = mysqli_real_escape_string($conn, $_POST['voter']);
-    $candidate = mysqli_real_escape_string($conn, $_POST['candidate']);
+    // You can remove the line below to prevent the user from updating the candidate field
+    // $candidate = mysqli_real_escape_string($conn, $_POST['candidate']); 
     $voteDate = mysqli_real_escape_string($conn, $_POST['votedate']);
     $telephone = mysqli_real_escape_string($conn, $_POST['telephone']);
     $comment = mysqli_real_escape_string($conn, $_POST['comment']);
     $city = mysqli_real_escape_string($conn, $_POST['city']);
     $vote = isset($_POST['vote']) ? 1 : 0;
 
-    $sql = "UPDATE vote SET voter='$voter', candidate='$candidate', votedate='$voteDate', telephone='$telephone', comment='$comment', city='$city', vote=$vote WHERE id=$id";
+    $sql = "UPDATE vote SET voter='$voter', votedate='$voteDate', telephone='$telephone', comment='$comment', city='$city', vote=$vote WHERE id=$id";
     $result = mysqli_query($conn, $sql);
 
-    if($result) {
+    if ($result) {
         header('Location: view_vote.php');
     } else {
         echo 'Failed to update vote.';
