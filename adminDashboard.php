@@ -57,6 +57,12 @@ if (!isset($_SESSION["user_id"])) {
                         <span class="item">View Candidates</span>
                     </a>
                 </li>
+                <li>
+                    <a href="add_vote/view_vote.php">
+                        <span class="icon"><i class="fas fa-trash"></i></span>
+                        <span class="item">View Votes</span>
+                    </a>
+                </li>
 
                 
                 <li>

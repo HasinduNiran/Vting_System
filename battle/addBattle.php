@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/style.css">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Create Battle</title>
@@ -105,7 +105,7 @@ if (!$result) {
     <h1>Create Battle</h1>
 
     <div class="contact-form">
-        <form action="addBattle.php" method="post">
+        <form action="addBattle.php" method="post" onsubmit="return validateForm()">
             <div class="form-group">
                 <label for="name">Battle Name:</label>
                 <input type="text" id="name" name="name" required>
@@ -175,6 +175,29 @@ if (!$result) {
         }
     }
     ?>
+    <script>
+        function validateForm() {
+            var name = document.getElementById("name").value;
+            var player1 = document.getElementById("player1").value;
+            var player2 = document.getElementById("player2").value;
+            var description = document.getElementById("description").value;
+
+            // Check if any field is empty
+            if (name.trim() === "" || player1.trim() === "" || player2.trim() === "" || description.trim() === "") {
+                alert("Please fill in all fields.");
+                return false;
+            }
+
+            // Check if name contains only letters
+            var nameRegex = /^[a-zA-Z\s]+$/;
+            if (!nameRegex.test(name)) {
+                alert("Battle name must contain only letters.");
+                return false;
+            }
+
+            return true;
+        }
+    </script>
 </body>
 
 </html>

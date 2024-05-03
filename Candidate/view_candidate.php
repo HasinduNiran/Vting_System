@@ -18,7 +18,7 @@
       <link rel="stylesheet" href="../css/style.css">
       <style>
         body {
-            background-image: url('../image/dg.png'); /* Replace 'background.jpg' with your actual image file */
+            background-image: url('../image/sform.png'); /* Replace 'background.jpg' with your actual image file */
             background-size: cover;
             background-repeat: no-repeat;
             font-family: Arial, sans-serif; /* Use your preferred font-family */

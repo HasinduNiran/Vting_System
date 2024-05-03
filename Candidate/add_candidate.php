@@ -141,19 +141,7 @@ button[type="submit"]:hover {
     </style>
 </head>
 <body>
-<header class="header">
 
-<a href="#" class="logo">
-    <img src="../image/pngegg.png" alt="" width="150px" height="70px"> </a>
-
-<nav class="navbar">
-    <a href="#">home</a>
-    <a href="#">Contact Us</a>
-</nav>
-
-<div id="menu-btn" class="fas fa-bars"></div>
-
-</header>
     <h1>Add Candidate</h1>
 
     <div class="container">

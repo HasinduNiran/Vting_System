@@ -2,7 +2,7 @@
 <html>
 <head>
     <title>Feedback</title>
-    <<style>
+    <style>
         * {
     margin: 0;
     padding: 0;
@@ -20,7 +20,6 @@ body {
 }
 
 h1 {
-    
     text-align: center;
     margin: 20px 0;
     background-color: white;
@@ -84,7 +83,7 @@ button[type="submit"]:hover {
     <h1>Feedback</h1>
 
     <div class="contact-form">
-        <form action="contactUs.php" method="post">
+        <form action="contactUs.php" method="post" onsubmit="return validateForm()">
             <div class="form-group">
                 <label for="name">Name:</label>
                 <input type="text" id="name" name="name" required>
@@ -103,8 +102,35 @@ button[type="submit"]:hover {
             <button type="submit" name="submit">Submit</button>
         </form>
     </div>
-</body>
-</html>
+
+    <script>
+        function validateForm() {
+            var name = document.getElementById("name").value;
+            var email = document.getElementById("email").value;
+            var message = document.getElementById("message").value;
+
+            // Check if any field is empty
+            if (name.trim() === "" || email.trim() === "" || message.trim() === "") {
+                alert("Please fill in all fields.");
+                return false;
+            }
+
+            // Check if name contains only letters
+            var nameRegex = /^[a-zA-Z]+$/;
+            if (!nameRegex.test(name)) {
+                alert("Name must contain only letters.");
+                return false;
+            }
+
+            // Email validation (built-in HTML5)
+            if (!document.getElementById("email").checkValidity()) {
+                alert("Invalid email format.");
+                return false;
+            }
+
+            return true;
+        }
+    </script>
 
 <?php
 include '../dbh.php';
@@ -141,3 +167,6 @@ if (isset($_POST['submit'])) {
     }
 }
 ?>
+
+</body>
+</html>
