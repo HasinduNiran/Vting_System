@@ -3,12 +3,7 @@
 <head>
     <title>Voting</title>
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
+        /* CSS for Vote Box */
         body {
             background-image: url('3.jpg');
             background-size: cover;
@@ -26,13 +21,15 @@
             width: 60%;
             height: 50px;
             border-radius: 8px;
-            margin-left: 270px;
+            margin-left: auto;
+            margin-right: auto;
+            padding-top: 15px;
         }
 
         .contact-form {
-            width: 70%;
-            max-width: 600px;
-            margin: 0 auto;
+            width: 60%;
+            max-width: 500px;
+            margin: 20px auto;
             background-color: #fff;
             padding: 20px;
             border-radius: 8px;
@@ -80,20 +77,22 @@
     </style>
 </head>
 <body>
-    <h1>Add New Vote</h1>
+    
 
     <form action="add_vote.php" method="post" class="contact-form">
-
-        <label for="candidate">Candidates:</label>
+    <h1>Add New Vote</h1>
+        <label for="candidate">Vote Number:</label>
         <select id="candidate" name="candidate" required>
-            <option value="candidate1">Candidate 1</option>
-            <option value="candidate2">Candidate 2</option>
-            <option value="candidate3">Candidate 3</option>
+            <option value="candidate1"> 01</option>
+            <option value="candidate2"> 02</option>
+            <option value="candidate3"> 03</option>
+            <option value="candidate4"> 04</option>
+            <option value="candidate5"> 05</option>
             <!-- Add more candidates as needed -->
         </select>
 
-        <label for="vote">Vote:</label>
-        <input type="checkbox" id="vote" name="vote" value="1">
+        <!-- <label for="vote">Vote:</label>
+        <input type="checkbox" id="vote" name="vote" value="1"> -->
 
         <button type="submit" name="submit">Add Vote</button>
     </form>
@@ -127,4 +126,3 @@ if (isset($_POST['submit'])) {
     $conn->close();
 }
 ?>
-
