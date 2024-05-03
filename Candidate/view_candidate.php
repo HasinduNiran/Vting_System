@@ -14,8 +14,28 @@
     <meta charset="UTF-8">
     <title>View Candidates</title>
     <link rel="stylesheet" href="s.css">
+      <!-- custom css file link  -->
+      <link rel="stylesheet" href="../css/style.css">
 </head>
 <body>
+<header class="header">
+
+<a href="#" class="logo">
+    <img src="image/pngegg.png" alt="" width="150px" height="70px"> </a>
+
+<nav class="navbar">
+    <a href="#">home</a>
+    <a href="#">Shop</a>
+    <a href="#">New Arrivals</a>
+    <a href="#">Mens</a>
+    <a href="#">Womens</a>
+    <a href="#">Kids</a>
+    <a href="#">Contact Us</a>
+</nav>
+
+<div id="menu-btn" class="fas fa-bars"></div>
+
+</header>
     <div class="container">
         <div class="candidates">
         <?php
@@ -32,9 +52,11 @@
                     // Display a placeholder image or message if no profile picture is available
                     echo "<p>No photo available</p>";
                 }
-
+                // echo '<td><img src="' . $row['photo'] . '" alt="candidate Image" width="100"></td>';
                 echo "<p><strong>Age:</strong> " . htmlspecialchars($row['age']) . "</p>"; // Sanitize output
                 echo "<p><strong>Vote Number:</strong> " . htmlspecialchars($row['votenumber']) . "</p>"; // Sanitize output
+                echo "<p><strong>Date of Birth:</strong> " . htmlspecialchars($row['dob']) . "</p>"; // Sanitize output
+                echo "<p><strong>Villege:</strong> " . htmlspecialchars($row['villege']) . "</p>"; // Sanitize output                
                 echo "<p><strong>Performance:</strong> " . htmlspecialchars($row['perfomance']) . "</p>"; // Sanitize output
                 
                 // Edit button

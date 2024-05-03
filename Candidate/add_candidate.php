@@ -7,6 +7,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Retrieve form data
     $name = $_POST['name'];
     $age = $_POST['age'];
+    $dob = $_POST['dob'];
+    $villege = $_POST['villege'];
     $votenumber = $_POST['votenumber'];
     $performance = $_POST['perfomance']; // corrected variable name
 
@@ -44,8 +46,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     } else {
         if (move_uploaded_file($_FILES["photo"]["tmp_name"], $targetFile)) {
             // Insert data into the database
-            $sql = "INSERT INTO candidate (name, age, votenumber, perfomance, photo) 
-                    VALUES ('$name', '$age', '$votenumber', '$performance', '$targetFile')";
+            $sql = "INSERT INTO candidate (name, age,dob,villege, votenumber, perfomance, photo) 
+                    VALUES ('$name', '$age','$dob','$villege', '$votenumber', '$performance', '$targetFile')";
             if (mysqli_query($conn, $sql)) {
                 echo "Candidate added successfully.";
             } else {
@@ -73,6 +75,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             <input type="text" name="name" id="name" required>
             <label for="age">Age</label>
             <input type="number" name="age" id="age" required>
+            <label for="dob">Date of Birth</label>
+            <input type="date" name="dob" id="dob" required >
+            <label for="villege">Villege</label>
+            <input type="text" name="villege" id="villege" required>
             <label for="votenumber">Vote Number</label>
             <input type="number" name="votenumber" id="votenumber" required>
             <label for="perfomance">Performance</label>
