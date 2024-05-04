@@ -1,10 +1,4 @@
-<?php
-session_start(); // Make sure to start the session
-if (!isset($_SESSION["user_id"])) {
-    header("Location: login.php");
-    exit();
-}
-?>
+
 <!DOCTYPE html>
 <html lang="en">
 
