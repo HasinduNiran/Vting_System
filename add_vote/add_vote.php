@@ -5,7 +5,7 @@
     <style>
         /* CSS for Vote Box */
         body {
-            background-image: url('../image/d.png');
+            background-image: url('../image/sky.png');
             background-size: cover;
             background-repeat: no-repeat;
             font-family: Arial, sans-serif;

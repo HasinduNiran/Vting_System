@@ -56,7 +56,7 @@ if (isset($_POST["submit"])) { // Check if the form is submitted
             <input type="date" placeholder="Birthday" name="dob"><br><br>
 
             <label>Telephone No</label><br>
-            <input type="text" placeholder="077-1234567" name="phone"><br><br>
+            <input type="text" placeholder="077-XXXXXXX" name="phone"><br><br>
 
             <label>Email</label><br>
             <input type="email" placeholder="example@email.com" name="email"><br><br>

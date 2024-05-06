@@ -55,13 +55,19 @@ if (isset($_SESSION['user_id'])) {
 <html>
 <head>
     <title>Edit Profile</title>
-    <link rel="stylesheet" type="text/css" href="dashboard-style.css"> <!-- You can reuse the CSS from the dashboard -->
+    <!-- <link rel="stylesheet" type="text/css" href="dashboard-style.css">  -->
     <style>
+
+
+
         body {
-    font-family: 'Arial', sans-serif;
-    background-color: #f4f4f4;
-    margin: 0;
-    padding: 0;
+            font-family: 'Arial', sans-serif;
+            
+            margin: 0;
+            padding: 0;
+            background-image: url("./../image/sky.png");
+            background-size: cover;
+            background-repeat: no-repeat;
 }
 
 .container {
@@ -141,11 +147,7 @@ button:hover {
 }
 
 /* Optional: Add a background image or texture */
-body {
-    background-image: url('pink-background-with-palm-tree.jpg');
-    background-size: cover;
-    background-repeat: no-repeat;
-}
+
 
     </style>
 </head>

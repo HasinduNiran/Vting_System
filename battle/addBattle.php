@@ -11,7 +11,7 @@
         @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap');
 
         body {
-            background-image: url("battleBack.png");
+            background-image: url("battle.png");
             background-repeat: no-repeat;
             background-attachment: fixed;
             background-position: center;

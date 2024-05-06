@@ -103,8 +103,41 @@ button[type="submit"]:hover {
             <button type="submit" name="submit">Submit</button>
         </form>
     </div>
+<<<<<<< Updated upstream
 </body>
 </html>
+=======
+
+    <script>
+        function validateForm() {
+            var name = document.getElementById("name").value;
+            var email = document.getElementById("email").value;
+            var message = document.getElementById("message").value;
+
+            // Check if any field is empty
+            if (name.trim() === "" || email.trim() === "" || message.trim() === "") {
+                alert("Please fill in all fields.");
+                return false;
+            }
+
+            // Check if name contains only letters and spaces
+var nameRegex = /^[a-zA-Z\s]+$/;
+if (!nameRegex.test(name)) {
+    alert("Name must contain only letters and spaces.");
+    return false;
+}
+
+
+            // Email validation (built-in HTML5)
+            if (!document.getElementById("email").checkValidity()) {
+                alert("Invalid email format.");
+                return false;
+            }
+
+            return true;
+        }
+    </script>
+>>>>>>> Stashed changes
 
 <?php
 include '../dbh.php';

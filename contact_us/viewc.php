@@ -18,13 +18,12 @@
         }
 
         h1 {
-            background-color: orangered;
+            background-color: white;
             width: 50%;
             height: 100px;
-
             text-align: center;
             margin: 20px auto;
-            color: white;
+            color: black;
             border-radius: 8px;
             font-size: 50px;
         }
@@ -50,20 +49,6 @@
             color: #fff;
         }
 
-        a {
-            display: inline-block;
-            padding: 8px 16px;
-            margin: 5px;
-            background-color: red;
-            color: #fff;
-            text-decoration: none;
-            border-radius: 5px;
-        }
-
-        a:hover {
-            text-decoration: underline;
-        }
-
         /* Optional: Add a background image or texture */
         body {
             background-image: url('3.jpg');
@@ -71,10 +56,81 @@
             background-repeat: no-repeat;
         }
 
+        .header {
+            background: #7bbcf1;
+            padding: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo img {
+            width: 150px;
+            height: 70px;
+        }
+
+        .navbar {
+            margin-left: auto; /* Shifts the navbar to the right */
+        }
+
+        .navbar a {
+            color: #fff;
+            text-decoration: none;
+            margin-right: 20px;
+            padding: 8px 16px; /* Padding for the button */
+            border-radius: 5px; /* Rounded corners */
+            background-color: #4CAF50; /* Green background */
+            transition: background-color 0.3s; /* Smooth transition */
+        }
+
+        .navbar a:hover {
+            background-color: #45a049; /* Darker green on hover */
+        }
+
+        .menu-btn {
+            color: #fff;
+            font-size: 24px;
+            cursor: pointer;
+        }
+
+        /* Update and Delete button colors */
+        table a {
+            padding: 4px 8px;
+            border-radius: 3px;
+            text-decoration: none;
+            color: #fff;
+        }
+
+        table a.update {
+            background-color: #007bff; /* Blue color for Update button */
+        }
+
+        table a.delete {
+            background-color: #dc3545; /* Red color for Delete button */
+        }
+
+        table a:hover {
+            opacity: 0.8; /* Reduce opacity on hover */
+        }
+
     </style>
 </head>
 <body>
-    <a href="../dashboard.php">Home</a>
+
+<header class="header">
+    <a href="#" class="logo">
+        <img src="../image/pngegg.png" alt="">
+    </a>
+
+    <nav class="navbar">
+        <a href="../index.html" class="btn">Home</a>
+    </nav>
+
+    <div id="menu-btn" class="menu-btn fas fa-bars"></div>
+</header>
+
+
+    
     <h1>Feedback Details</h1>
     
     <table>
@@ -110,8 +166,8 @@
                 echo '<td>' . $row['email'] . '</td>';
                 echo '<td>' . $row['message'] . '</td>';
                 echo '<td>
-                        <a href="updatec.php?id=' . $row['id'] . '">Update</a> |
-                        <a href="deletec.php?id=' . $row['id'] . '">Delete</a>
+                        <a href="updatec.php?id=' . $row['id'] . '" class="update">Update</a> |
+                        <a href="deletec.php?id=' . $row['id'] . '" class="delete">Delete</a>
                       </td>';
                 echo '</tr>';
             } else {
@@ -130,8 +186,8 @@
                 echo '<td>' . $row['email'] . '</td>';
                 echo '<td>' . $row['message'] . '</td>';
                 echo '<td>
-                        <a href="updatec.php?id=' . $row['id'] . '">Update</a> |
-                        <a href="deletec.php?id=' . $row['id'] . '">Delete</a>
+                        <a href="updatec.php?id=' . $row['id'] . '" class="update">Update</a> |
+                        <a href="deletec.php?id=' . $row['id'] . '" class="delete">Delete</a>
                       </td>';
                 echo '</tr>';
             }

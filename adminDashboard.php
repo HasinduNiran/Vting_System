@@ -58,6 +58,20 @@ if (!isset($_SESSION["user_id"])) {
                     </a>
                 </li>
 
+                <li>
+                    <a href="contact_us/viewc.php">
+                        <span class="icon"><i class="fas fa-trash"></i></span>
+                        <span class="item">View Feedbacks</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="battle/viewbattle.php">
+                        <span class="icon"><i class="fas fa-trash"></i></span>
+                        <span class="item">View Battles</span>
+                    </a>
+                </li>
+
                 
                 <li>
                     <a href="logout.php">
