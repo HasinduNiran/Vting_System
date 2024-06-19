@@ -3,68 +3,89 @@
 <head>
     <title>View Votes</title>
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f4f4f4;
+          * {
             margin: 0;
-            padding: 20px;
-            background-image: url('../image/dg.png');
-            background-size: cover;
-            background-repeat: no-repeat;
-            font-family: Arial, sans-serif;
+            padding: 0;
+            box-sizing: border-box;
         }
 
-        h1 {
+        body {
+            font-family: Arial, sans-serif;
+          
+            background-image: url('../image/fullbg.jpg');
+            background-size: cover;
+            
+            background-position: center;
+        }
+
+        h2 {
+            background-color: rgb(60, 56, 54);
+            width: 50%;
+            height: 100px;
             text-align: center;
-            margin-bottom: 20px;
-            color: #333;
+           margin-top: 10%;
+            color: white;
+            border-radius: 8px;
+            font-size: 50px;
         }
 
         table {
-            width: 100%;
+            width: 80%;
+            height: 20%;
             border-collapse: collapse;
-            background-color: #fff;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            margin: 20px auto;
         }
 
         th, td {
+            border: 1px solid #171616;
             padding: 10px;
             text-align: left;
-            border-bottom: 1px solid #ddd;
         }
 
-        th {
+        tr:nth-child(even) {
             background-color: #f2f2f2;
         }
 
-        tr:hover {
-            background-color: #f9f9f9;
-        }
-
-        .action-btn {
-            padding: 8px 16px;
-            border-radius: 4px;
-            cursor: pointer;
-            transition: background-color 0.3s ease;
-        }
-
-        .delete-btn {
-            background-color: #ff5757;
+        th {
+            background-color: #333;
             color: #fff;
         }
 
-        .update-btn {
-            background-color: #007bff;
-            color: #fff;
+        a:hover {
+            text-decoration: underline;
         }
+        
+    /* Styles for update and delete links */
+    .update-link, .delete-link {
+        text-decoration: none;
+        color: #007bff; /* Blue color */
+        margin-right: 5px; /* Add some spacing between links */
+    }
 
-        .action-btn:hover {
-            background-color: #0056b3;
-        }
+    .update-link:hover, .delete-link:hover {
+        text-decoration: underline;
+    }
+
+    .delete-link {
+        color: #dc3545; /* Red color */
+    }
     </style>
 </head>
 <body>
-    <h1>View Votes</h1>
+    <nav class="nav">
+        <link rel="stylesheet" href="../Header/headcss.css" />
+        <script src="../Header/headjs.js"></script>
+        <div class="containerr">
+            <h1 class="logo"><a href="index.php">VoteSphere</a></h1>
+            <ul>
+                <li><a href="index.php">Home</a></li>
+                <li><a href="contact_us/contactUs.php">Contact</a></li>
+                <li><a href="add_vote/view_vote.php">Vote</a></li>
+                <li><a href="login.php">Login</a></li>
+            </ul>
+        </div>
+    </nav>
+    <h2>View Votes</h2>
 
     <table>
         <thead>
@@ -105,11 +126,38 @@
                     echo "</td>";
                     echo "</tr>";
                 }
+                
             } else {
                 echo "<tr><td colspan='8'>No votes found</td></tr>";
             }
             ?>
         </tbody>
     </table>
+    <footer id="footer">
+        <link rel="stylesheet" href="../footer/footcss.css" />
+        <div class="col col1">
+            <h3>VoteSphere</h3>
+            <p>Made with <span style="color: #BA6573;">❤</span> by Jux</p>
+            <div class="social">
+                <a href="" target="_blank" class="link"><img src="https://assets.codepen.io/9051928/codepen_1.png" alt="" /></a>
+                <a href="" target="_blank" class="link"><img src="https://assets.codepen.io/9051928/x.png" alt="" /></a>
+                <a href="" target="_blank" class="link"><img src="https://assets.codepen.io/9051928/youtube_1.png" alt="" /></a>
+            </div>
+            <p style="color: #818181; font-size: smaller">2024 © All Rights Reserved</p>
+        </div>
+        <div class="col col2">
+            <p>About</p>
+            <p>Our mission</p>
+            <p>Privacy Policy</p>
+            <p>Terms of service</p>
+        </div>
+        <div class="col col3">
+            <p>Services</p>
+            <p>Products</p>
+            <p>Join our team</p>
+            <p>Partner with us</p>
+        </div>
+        <div class="backdrop"></div>
+    </footer>
 </body>
 </html>

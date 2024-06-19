@@ -174,16 +174,22 @@ button[type="submit"]:hover {
 </head>
 
 <body>
+<nav class="nav">
+        <link rel="stylesheet" href="../Header/headcss.css" />
+        <script src="../Header/headjs.js"></script>
+        <div class="containerr">
+            <h1 class="logo"><a href="index.php">One Shot Voting</a></h1>
+            <ul>
+              <li><a href="index.php">Home</a></li>
+              <li><a href="login.php">Login</a></li>
+              <li><a href="sign_up.php">Signup</a></li>
+        
+            </ul>
+          </div>
+        </nav>
 <link rel="stylesheet" href="../css/style.css">
 <header class="header">
 
-<a href="#" class="logo">
-    <img src="../image/pngegg.png" alt="" width="150px" height="70px"> </a>
-
-<nav class="navbar">
-    <a href="#">home</a>
-    <a href="#">Contact Us</a>
-</nav>
 
 <div id="menu-btn" class="fas fa-bars"></div>
 
@@ -213,6 +219,7 @@ button[type="submit"]:hover {
             <button type="submit">Save Candidate</button>
         </form>
     </div>
+    
 </body>
 
 </html>

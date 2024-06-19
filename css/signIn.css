@@ -3,7 +3,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap');
 
 body{
-    background-image: url("../image/sinupbg.jpg");
+    background-image: url("../image/fullbg.jpg");
     background-repeat: no-repeat;
     background-attachment: fixed;
     background-position: center;
@@ -12,14 +12,15 @@ body{
 .signbox {
     width: 90%;
     max-width: 450px;
-    position: absolute;
-    top: 200px; /* Adjust the vertical position of the form */
-    left: 50%;
+    position:absolute;
+    height: 107%;
+    top: 140px; /* Adjust the vertical position of the form */
+    left: 70%;
     transform: translateX(-50%);
     background-color: rgba(255, 255, 255, 0.9); /* Set background color with opacity */
     border-radius: 10px;
     padding: 50px 60px 70px;
-    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.2); /* Add shadow to the border */
+    box-shadow: 0px 0px 30px rgba(0, 0, 0, 0.2); /* Add shadow to the border */
 }
 input{
     padding: 15px 10px;
@@ -27,16 +28,9 @@ input{
     font-family: Poppins , 'sans';
     border-radius: 10px;
     border-style: none;
-    background-color: rgb(145, 205, 207);
+    background-color: rgb(239, 244, 244);
 }
-body {
-    background-image: url("../image/sform.png");
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-    background-position: center;
-    background-size: cover;
-    /* opacity: 0.8;  */
-}
+
 
 button{
     margin: 10px;
@@ -67,4 +61,9 @@ button:hover{
 }
 h3,h1{
     text-decoration: underline;
+}
+.image{
+    margin-left: 10%;
+margin-top: 10%;
+
 }

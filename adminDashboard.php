@@ -12,6 +12,19 @@
 </head>
 
 <body>
+    <nav class="nav">
+        <link rel="stylesheet" href="Header/headcss.css" />
+        <script src="Header/headjs.js"></script>
+        <div class="containerr">
+            <h1 class="logo"><a href="index.php">One Shot Voting</a></h1>
+            <ul>
+              <li><a href="index.php">Home</a></li>
+              <li><a href="login.php">Login</a></li>
+              <li><a href="sign_up.php">Signup</a></li>
+        
+            </ul>
+          </div>
+        </nav>
 
     <div class="wrapper">
 
@@ -37,6 +50,13 @@
                 </li>
 
                 <li>
+                    <a href="battle/viewBattle.php">
+                        <span class="icon"><i class="fa fa-cloud" aria-hidden="true"></i></span>
+                        <span class="item"> View Battle</span>
+                    </a>
+                </li>
+
+                <li>
                     <a href="Candidate/add_candidate.php">
                         <span class="icon"><i class="fas fa-users"></i></span>
                         <span class="item">Create Candidates</span>
@@ -47,13 +67,13 @@
 
                 <li>
                     <a href="Candidate/view_candidate.php">
-                        <span class="icon"><i class="fas fa-trash"></i></span>
+                        <span class="icon"><i class="fa fa-cloud" aria-hidden="true"></i></span>
                         <span class="item">View Candidates</span>
                     </a>
                 </li>
                 <li>
                     <a href="add_vote/view_vote.php">
-                        <span class="icon"><i class="fas fa-trash"></i></span>
+                        <span class="icon"><i class="fa fa-window-close" aria-hidden="true"></i></span>
                         <span class="item">View Votes</span>
                     </a>
                 </li>
@@ -82,6 +102,7 @@
         
     </div>
 
+    
 </body>
 
 </html>

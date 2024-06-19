@@ -14,7 +14,7 @@ if (isset($_SESSION['user_id'])) {
         session_destroy();
         echo '<script type="text/javascript">
         window.onload = function () { alert("Account Deleted !"); 
-            window.location.href = "../index.html";}
+            window.location.href = "../index.php";}
         </script>';
         exit;
     }

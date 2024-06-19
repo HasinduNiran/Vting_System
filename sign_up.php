@@ -45,6 +45,22 @@ if (isset($_POST["submit"])) { // Check if the form is submitted
 </head>
 
 <body>
+    <nav class="nav">
+        <link rel="stylesheet" href="Header/headcss.css" />
+        <script src="Header/headjs.js"></script>
+        <div class="containerr">
+            <h1 class="logo"><a href="index.php">One Shot Voting</a></h1>
+            <ul>
+              <li><a href="index.php">Home</a></li>
+              <li><a href="login.php">Login</a></li>
+              <li><a href="sign_up.php">Signup</a></li>
+        
+            </ul>
+          </div>
+        </nav>
+    <div class="image">
+        <img src="image/signlogo.png" alt="" width="450px" height="450px">
+    </div>
     
     <div class="signbox">
         <!-- Display success or error message -->
@@ -52,7 +68,7 @@ if (isset($_POST["submit"])) { // Check if the form is submitted
         <center>
             <h1 class="SignIn">Register</h1>
         </center>
-
+      
         <form class="signinbox" method="post" action="" autocomplete="off" id="registrationForm">
             <!-- Form fields -->
             <label>First Name</label><br>

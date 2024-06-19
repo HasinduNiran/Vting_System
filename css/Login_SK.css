@@ -1,90 +1,213 @@
-@import url('https://fonts.googleapis.com/css2?family=Sora:wght@600&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@700&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap');
-body{
-    background-image: url("../image/sinupbg.png");
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center;
-    height: 100vh;
-  }
-.fromebox{
-    width: 90%;
-    max-width: 450px;
-    position: absolute;
-    top: 58%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    background-color: aliceblue;
-    border-radius: 10px;
-    padding: 50px 60px 70px;
-    text-align: center;
-    align-self: center;
-}
-.input{
-
-    padding: 10px;
-    
-}
-.login{
-    font-size: 30px;
-    font-family: Sora ,'sans';
-    color: rgb(96, 106, 241);
-}
-input{
-    padding: 15px 10px;
-    width: 50vh;
-    font-family: Poppins , 'sans';
-    border-radius: 10px;
-    border-style: none;
-    background-color: rgb(170, 193, 226);
-}
-i {
-    margin: 15px;
-    color: rgb(90, 88, 88);
-}
-input:focus{
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
     outline: none;
 }
-form p{
-    font-family: Poppins , 'sans';
-    font-size: 15px;
-   
+body{
+    background-image: url("../image/fullbg.jpg");
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center;
+    background-size: cover;
 }
-.btn{
+
+.contain {
+    width: fit-content;
+    height: fit-content;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+    margin-top: 50px;
+}
+
+.login {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+}
+
+form {
+    max-width: 380px;
+    width: 100%;
+    font-family: 'Montserrat', sans-serif;
+}
+
+form input[type="email"] , input[type="Password"] {
+    width: 100%;
+    font-size: 13px;
+    padding: 13px;
+    padding-left: 20px;
+    border: none;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 500;
+    border: 3px solid #ededed;
+    border-radius: 50px;
+}
+
+label {
+    display: block;
+    margin-top: 20px;
+    margin-bottom: 8px;
+}
+
+form h1 {
+    font-family: 'Poppins', sans-serif;
+    color: #7673c8;
+    /* color: #c89173; */
+    margin-bottom: 10px;
+}
+
+small {
+    font-size: 12px;
+    color: #c1c1c1;
+}
+
+.mor {
+    display: flex;
+    align-items: center;
+    position: relative;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.mor label {
+    margin: 0;
+    font-size: 13px;
+}
+
+.mor a {
+    position: absolute;
+    right: 0;
+    font-size: 13px;
+    text-decoration: none;
+}
+
+.log {
+    width: 100%;
+    font-size: 15px;
+    padding: 10px;
+    border: none;
+    margin-bottom: 20px;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 500;
+    border: 3px solid #ededed;
+    border-radius: 50px;
+    /* the real one for all border-radius: 5px; */
+    color: white;
+    border: 3px solid #7673c8;
+    background-color: #7673c8;
+    transition: .4s;
+}
+
+.log:hover {
+    background-color: #5c59a7;
+}
+
+.check {
+    margin-right: 5px;
+}
+
+.op {
     width: 100%;
     display: flex;
-    justify-content:center;
-    
-    
+    margin-top: 20px;
+    justify-content: space-between;
 }
-button{
-    margin: 10px;
+
+.op button {
+    width: 48%;
     padding: 15px;
-    width: 20vh;
-    background-color: rgb(61, 150, 202);
-    border-style: none;
-    border-radius: 20px;
-    font-size: 15px;
-    color: aliceblue;
-    font-family: Poppins , 'sans';
-    transition: color 0.3s ease , background-color 0.3s ease;
+    border: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50px;
+    font-size: 13px;
+    font-family: 'Poppins', sans-serif;
+    border: 3px solid #ededed;
+    background-color: white;
+    transition: .4s;
 }
-button:hover{
-    color:  rgb(20, 192, 135);
-    background-color: rgb(237, 237, 237);
+
+.op button:hover {
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
 }
-.click{
-    text-decoration: none;
-    color: rgb(14, 49, 207);
+
+.Google-logo {
+    width: 15px;
+    margin-right: 10px; 
 }
-.click:hover{
-    color: black;
+
+.Apple-logo {
+    width: 15px;
+    margin-right: 10px;
 }
-.errorbox{
-    background-color: rgb(8, 167, 132);
-    padding: 10px;
-    color:aliceblue;
-    font-family:monospace;
-    border-radius: 20px;
+
+.container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #d9d9d9;
+}
+
+.line {
+    width: 100%;
+    height: 4px;
+    margin: 10px;
+    border-radius: 5px;
+    background-color: #ededed;
+}
+
+
+
+svg {
+    color: #c1c1c1;
+}
+
+.image {
+    width: 400px;
+    height: 515px;
+    border-radius: 40px;
+    background-color: rgb(191, 191, 191);
+    background-image: url("../image/vote.jpg");
+    background-repeat: no-repeat;
+  
+    background-position: center;
+    background-size: cover;
+
+}
+
+.sign {
+    max-width: 100px;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    border-radius: 40px;
+    border: none;
+    outline: none;
+    margin: 20px;
+    /* float: right; */
+    cursor: pointer;
+    color: #5c59a7;
+    font-weight: 600;
+    font-family: 'Poppins', sans-serif;
+    background-color: #fff;
+    margin-left: 60%;
+}
+
+.image h1 {
+    margin: 20px;
+    color: #ffffff;
+    font-family: 'Poppins', sans-serif;
+}
+
+@media only screen and (max-width: 860px) {
+    .image {
+      display: none;
+    }
 }

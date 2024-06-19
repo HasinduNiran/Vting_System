@@ -18,6 +18,19 @@ if (!isset($_SESSION["user_id"])) {
 </head>
 
 <body>
+    <nav class="nav">
+        <link rel="stylesheet" href="Header/headcss.css" />
+        <script src="Header/headjs.js"></script>
+        <div class="containerr">
+            <h1 class="logo"><a href="index.php">One Shot Voting</a></h1>
+            <ul>
+              <li><a href="index.php">Home</a></li>
+              <li><a href="login.php">Login</a></li>
+              <li><a href="sign_up.php">Signup</a></li>
+        
+            </ul>
+          </div>
+        </nav>
 
     <div class="wrapper">
 
@@ -46,10 +59,18 @@ if (!isset($_SESSION["user_id"])) {
 
                 <li>
                     <a href="Contact_us/contactUs.php">
-                        <span class="icon"><i class="fas fa-trash"></i></span>
+                        <span class="icon"><i class="fas fa-cloud"></i></span>
                         <span class="item">Add Feedback</span>
                     </a>
                 </li>
+
+                <li>
+                    <a href="Contact_us/viewc.php">
+                        <span class="icon"><i class="fas fa-cloud"></i></span>
+                        <span class="item">View My Feedbacks</span>
+                    </a>
+                </li>
+
 
                 <li>
                     <a href="profile/view.php">
@@ -75,6 +96,7 @@ if (!isset($_SESSION["user_id"])) {
         
     </div>
 
+   
 </body>
 
 </html>

@@ -15,85 +15,153 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET' && isset($_GET['id'])) {
 <head>
     <title>Update Vote</title>
     <style>
-    /* Reset default browser styles */
     * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-    }
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
 
-    body {
-        font-family: Arial, sans-serif;
-        background-color: #f4f4f4;
-        margin: 0;
-        padding: 0;
-        background-image: url("../image/dg.png");
-        background-size: cover;
-        background-repeat: no-repeat;
-    }
-    
+        .containerr {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
 
-    h1 {
-        text-align: center;
-        margin: 20px 0;
-        color: #333;
-    }
+        .nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background-color: #222;
+            transition: top 0.3s;
+            font-family: system-ui, sans-serif;
+        }
 
-    .contact-form {
-        width: 70%;
-        max-width: 600px;
-        margin: 0 auto;
-        background-color: #fff;
-        padding: 20px;
-        border-radius: 8px;
-        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    }
+        .nav .containerr {
+            display: flex;
+            justify-content: space-between;
+            padding: 20px 0;
+            transition: all 0.3s ease-in-out;
+        }
 
-    .form-group {
-        margin: 10px 0;
-    }
+        .nav ul {
+            display: flex;
+            align-items: center;
+            list-style: none;
+            justify-content: center;
+        }
 
-    label {
-        display: block;
-        font-weight: bold;
-        color: #333;
-    }
+        .nav a {
+            text-decoration: none;
+            color: #fff;
+            padding: 7px 15px;
+            transition: all 0.3s ease-in-out;
+        }
 
-    input[type="text"],
-    input[type="date"],
-    input[type="tel"],
-    select,
-    textarea {
-        width: 100%;
-        padding: 10px;
-        border: 1px solid #ddd;
-        border-radius: 4px;
-        font-size: 16px;
-        margin-bottom: 10px; /* Add margin bottom */
-    }
+        .nav.active {
+            background-color: #fff;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+        }
 
-    textarea {
-        resize: vertical;
-    }
+        .nav.active a {
+            color: #222;
+        }
 
-    button[type="submit"] {
-        background-color: #007bff;
-        color: #fff;
-        border: none;
-        border-radius: 4px;
-        padding: 10px 20px;
-        font-size: 16px;
-        cursor: pointer;
-        width: 100%; /* Make button full width */
-    }
+        .nav.active .containerr {
+            padding: 10px 0;
+        }
 
-    button[type="submit"]:hover {
-        background-color: #0056b3;
-    }
+        .nav a.current, .nav a:hover {
+            color: #D80032;
+            font-weight: bold;
+        }
+
+        /* Feedback form CSS */
+        body {
+            background-image: url("../image/fullbg.jpg");
+            background-size: cover;
+            background-repeat: no-repeat;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        h2 {
+            text-align: center;
+            margin: 20px 0;
+            background-color: rgb(27, 22, 22);
+            width: 60%;
+            height: 50px;
+            border-radius: 8px;
+            margin-left: 0%;
+            margin-top: 10%;
+       
+        }
+
+        .contact-form {
+            width: 70%;
+            max-width: 600px;
+           margin-top: 7%;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .form-group {
+            margin: 10px 0;
+        }
+
+        label {
+            display: block;
+            font-weight: bold;
+            color: #333;
+        }
+
+        input[type="text"],
+        input[type="email"],
+        textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 16px;
+        }
+
+        textarea {
+            resize: vertical;
+        }
+
+        button[type="submit"] {
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        button[type="submit"]:hover {
+            background-color: #0056b3;
+        }
 
 </style>
 </head>
 <body>
+<nav class="nav">
+        <link rel="stylesheet" href="../Header/header.html" />
+        <script src="../Header/headjs.js"></script>
+          <div class="containerr">
+            <h1 class="logo"><a href="index.php">VoteSphere</a></h1>
+            <ul>
+              <li><a href="index.php">Home</a></li>
+              <li><a href="contact_us/contactUs.php">Contact</a></li>
+              <li><a href="add_vote/view_vote.php">Vote</a></li>
+              <li><a href="login.php">Login</a></li>
+        
+            </ul>
+          </div>
+        </nav>
     <h1>Update Vote</h1>
 
     <form action="update_vote.php" method="post" class="contact-form">
@@ -129,6 +197,33 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET' && isset($_GET['id'])) {
         </div>
         <button type="submit" name="submit">Update</button>
     </form>
+    <footer id="footer">
+    <link rel="stylesheet" href="../footer/footcss.css" />
+      
+      <div class="col col1">
+        <h3>One shot Voting</h3>
+        
+        <div class="social">
+          <a href="" target="_blank" class="link"><img src="https://assets.codepen.io/9051928/codepen_1.png" alt="" /></a>
+          <a href="" target="_blank" class="link"><img src="https://assets.codepen.io/9051928/x.png" alt="" /></a>
+          <a href="" target="_blank" class="link"><img src="https://assets.codepen.io/9051928/youtube_1.png" alt="" /></a>
+        </div>
+        <p style="color: #818181; font-size: smaller">2024 © All Rights Reserved</p>
+      </div>
+      <div class="col col2">
+        <p>About</p>
+        <p>Our mission</p>
+        <p>Privacy Policy</p>
+        <p>Terms of service</p>
+      </div>
+      <div class="col col3">
+        <p>Services</p>
+        <p>Products</p>
+        <p>Join our team</p>
+        <p>Partner with us</p>
+      </div>
+      <div class="backdrop"></div>
+    </footer>
 </body>
 </html>';
     } else {

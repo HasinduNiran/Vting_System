@@ -60,20 +60,23 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/style.css">
     <meta charset="UTF-8">
     <title>Add Candidate</title>
     <style>
-       /* CSS for Update Candidate Form */
-.container {
-    max-width: 600px;
-    margin: 50px auto;
-    padding: 20px;
-    background-color: #f8f9fa;
-    border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-}
-body {
+        /* CSS for Update Candidate Form */
+        .container {
+            position: static;
+            width: 40%;
+            height: 120%;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: #f8f9fa;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        body {
             font-family: Arial, sans-serif;
             background-color: #f4f4f4;
             margin: 0;
@@ -84,91 +87,109 @@ body {
             font-family: Arial, sans-serif;
         }
 
-h1 {
-    text-align: center;
-    margin-bottom: 20px;
-    color: #333;
-}
+        h1 {
+            text-align: center;
+            margin-bottom: 20px;
+            color: #333;
+        }
 
-form {
-    padding: 20px;
-    background-color: #fff;
-    border-radius: 8px;
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
-}
+        form {
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+          
+        }
 
-label {
-    font-weight: bold;
-    margin-bottom: 10px;
-    display: block;
-    color: #333;
-}
+        label {
+            font-weight: bold;
+            margin-bottom: 10px;
+            display: block;
+            color: #333;
+        }
 
-input[type="text"],
-input[type="number"],
-input[type="date"],
-textarea {
-    width: calc(100% - 22px);
-    padding: 10px;
-    margin-bottom: 15px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    font-size: 16px;
-}
+        input[type="text"],
+        input[type="number"],
+        input[type="date"],
+        textarea {
+            width: calc(100% - 22px);
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
+        }
 
-img {
-    display: block;
-    margin-bottom: 10px;
-    max-width: 100%;
-    height: auto;
-    border-radius: 5px;
-}
+        img {
+            display: block;
+            margin-bottom: 10px;
+            max-width: 100%;
+            height: auto;
+            border-radius: 5px;
+        }
 
-button[type="submit"] {
-    background-color: #007bff;
-    color: #fff;
-    border: none;
-    border-radius: 5px;
-    padding: 10px 20px;
-    font-size: 18px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-}
+        button[type="submit"] {
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            padding: 10px 20px;
+            font-size: 18px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
 
-button[type="submit"]:hover {
-    background-color: #0056b3;
-}
+        button[type="submit"]:hover {
+            background-color: #0056b3;
+        }
     </style>
 </head>
 <body>
+<nav class="nav">
+    <link rel="stylesheet" href="../Header/headcss.css">
+    <script src="../Header/headjs.js"></script>
+    <div class="containerr">
+            <h1 class="logo"><a href="index.php">One Shot Voting</a></h1>
+            <ul>
+              <li><a href="index.php">Home</a></li>
+              <li><a href="login.php">Login</a></li>
+              <li><a href="sign_up.php">Signup</a></li>
+        
+            </ul>
+          </div>
+</nav>
 
-    <h1>Add Candidate</h1>
+<h1>Add Candidate</h1>
 
-    <div class="container">
-        <form action="add_candidate.php" method="post" enctype="multipart/form-data">
-            <label for="name">Name:</label>
-            <input type="text" id="name" name="name" required>
+<div class="container">
+    <form action="add_candidate.php" method="post" enctype="multipart/form-data">
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" required>
 
-            <label for="age">Age:</label>
-            <input type="number" id="age" name="age" required>
+        <label for="age">Age:</label>
+        <input type="number" id="age" name="age" required>
 
-            <label for="dob">Date of Birth:</label>
-            <input type="date" id="dob" name="dob" required>
+        <label for="dob">Date of Birth:</label>
+        <input type="date" id="dob" name="dob" required>
 
-            <label for="villege">Village:</label>
-            <input type="text" id="villege" name="villege" required>
+        <label for="villege">Village:</label>
+        <input type="text" id="villege" name="villege" required>
 
-            <label for="votenumber">Vote Number:</label>
-            <input type="number" id="votenumber" name="votenumber" required>
+        <label for="votenumber">Vote Number:</label>
+        <input type="number" id="votenumber" name="votenumber" required>
 
-            <label for="perfomance">perfomance:</label>
-            <input type="text" id="perfomance" name="perfomance" required>
+        <label for="perfomance">Performance:</label>
+        <input type="text" id="perfomance" name="perfomance" required>
 
-            <label for="photo">Profile Image:</label>
-            <input type="file" id="photo" name="photo" accept="image/*" required><br><br>
+        <label for="photo">Profile Image:</label>
+        <input type="file" id="photo" name="photo" accept="image/*" required><br><br>
 
-            <button type="submit">Add Candidate</button>
-        </form>
-    </div>
+        <button type="submit">Add Candidate</button>
+    </form>
+</div>
+
+
+
+
 </body>
 </html>

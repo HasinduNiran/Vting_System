@@ -20,8 +20,9 @@
 
         .contact-form {
             width: 90%;
+            margin-top: -15%;
             max-width: 450px;
-            position: absolute;
+            position: relative;
             top: 50%; /* Adjust the vertical position of the form */
             left: 50%;
             transform: translate(-50%, -50%);
@@ -29,6 +30,7 @@
             border-radius: 10px;
             padding: 50px 60px 70px;
             box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.2); /* Add shadow to the border */
+            max-height: 100%;
         }
 
         .form-group {
@@ -89,19 +91,19 @@ if (!$result) {
 ?>
 
 <body>
-<header class="header">
-
-<a href="#" class="logo">
-    <img src="../image/pngegg.png" alt="" width="150px" height="70px"> </a>
-
-<nav class="navbar">
-    <a href="#">home</a>
-    <a href="#">Contact Us</a>
-</nav>
-
-<div id="menu-btn" class="fas fa-bars"></div>
-
-</header>
+<nav class="nav">
+        <link rel="stylesheet" href="../Header/headcss.css" />
+        <script src="../Header/headjs.js"></script>
+        <div class="containerr">
+            <h1 class="logo"><a href="index.php">One Shot Voting</a></h1>
+            <ul>
+              <li><a href="index.php">Home</a></li>
+              <li><a href="login.php">Login</a></li>
+              <li><a href="sign_up.php">Signup</a></li>
+        
+            </ul>
+          </div>
+        </nav>
     <h1>Create Battle</h1>
 
     <div class="contact-form">
@@ -198,6 +200,37 @@ if (!$result) {
             return true;
         }
     </script>
+    <hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr>
+    <hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr>
+    <hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr>
+    <hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr>
+     <footer id="footer">
+  <link rel="stylesheet" href="../footer/footcss.css" />
+    
+    <div class="col col1">
+      <h3>One Shot Voting</h3>
+      
+      <div class="social">
+        <a href="" target="_blank" class="link"><img src="https://assets.codepen.io/9051928/codepen_1.png" alt="" /></a>
+        <a href="" target="_blank" class="link"><img src="https://assets.codepen.io/9051928/x.png" alt="" /></a>
+        <a href="" target="_blank" class="link"><img src="https://assets.codepen.io/9051928/youtube_1.png" alt="" /></a>
+      </div>
+      <p style="color: #818181; font-size: smaller">2024 © All Rights Reserved</p>
+    </div>
+    <div class="col col2">
+      <p>About</p>
+      <p>Our mission</p>
+      <p>Privacy Policy</p>
+      <p>Terms of service</p>
+    </div>
+    <div class="col col3">
+      <p>Services</p>
+      <p>Products</p>
+      <p>Join our team</p>
+      <p>Partner with us</p>
+    </div>
+    <div class="backdrop"></div>
+  </footer>
 </body>
 
 </html>

@@ -51,105 +51,119 @@ if (isset($_SESSION['user_id'])) {
         }
         ?>
 
+
 <!DOCTYPE html>
 <html>
 <head>
+
     <title>Edit Profile</title>
-    <link rel="stylesheet" type="text/css" href="dashboard-style.css"> <!-- You can reuse the CSS from the dashboard -->
+    <link rel="stylesheet" type="text/css" href="../Header/headcss.css">
+    <link rel="stylesheet" type="text/css" href="../footer/footcss.css">
     <style>
         body {
-    font-family: 'Arial', sans-serif;
-    background-color: #f4f4f4;
-    margin: 0;
-    padding: 0;
-}
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+            background-image: url("../image/fullbg.jpg");
+        }
 
-.container {
-    position: relative;
-    top: 100px;
-    max-width: 600px;
-    margin: 0 auto;
-    background-color: #fff;
-    border-radius: 10px;
-    padding: 20px;
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
-}
+        .container {
+            position: relative;
+            top: 100px;
+            max-width: 600px;
+            margin: 0 auto;
+            background-color: #fff;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+        }
 
-h1 {
-    font-size: 28px;
-    color: #333;
-    text-align: center;
-    margin-bottom: 20px;
-}
+        h1 {
+            font-size: 28px;
+            color: #333;
+            text-align: center;
+            margin-bottom: 20px;
+        }
 
-form {
-    text-align: center;
-}
+        form {
+            text-align: center;
+        }
 
-label {
-    display: block;
-    font-size: 18px;
-    margin-top: 20px;
-    color: #333;
-}
+        label {
+            display: block;
+            font-size: 18px;
+            margin-top: 20px;
+            color: #333;
+        }
 
-input {
-    width: 90%;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    font-size: 16px;
-}
+        input {
+            width: 90%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
+        }
 
-button {
-    background-color: #007bff;
-    color: #fff;
-    border: none;
-    border-radius: 5px;
-    padding: 10px 20px;
-    margin-top: 20px;
-    cursor: pointer;
-    font-size: 18px;
-    transition: background-color 0.3s ease;
-}
+        button {
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            padding: 10px 20px;
+            margin-top: 20px;
+            cursor: pointer;
+            font-size: 18px;
+            transition: background-color 0.3s ease;
+        }
 
-button:hover {
-    background-color: #0056b3;
-}
+        button:hover {
+            background-color: #0056b3;
+        }
 
-/* Styling for individual form fields */
-#firstname {
-    background-color: #f9f9f9;
-}
+        /* Styling for individual form fields */
+        #firstname,
+        #lastname,
+        #phone,
+        #email,
+        #password {
+            background-color: #f9f9f9;
+        }
 
-#lastname {
-    background-color: #f9f9f9;
-}
+        #firstname:focus,
+        #lastname:focus,
+        #phone:focus,
+        #email:focus,
+        #password:focus {
+            background-color: #fff;
+            border: 1px solid #007bff;
+            outline: none;
+        }
 
-#phone {
-    background-color: #f9f9f9;
-}
-
-#email {
-    background-color: #f9f9f9;
-}
-
-#firstname:focus, #lastname:focus, #phone:focus, #email:focus {
-    background-color: #fff;
-    border: 1px solid #007bff;
-    outline: none;
-}
-
-/* Optional: Add a background image or texture */
-body {
-    background-image: url('pink-background-with-palm-tree.jpg');
-    background-size: cover;
-    background-repeat: no-repeat;
-}
-
+        /* Optional: Add a background image or texture */
+        body {
+            background-image: url("../image/fullbg.jpg");
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-position: center;
+            background-size: cover;
+        }
     </style>
 </head>
 <body>
+    <nav class="nav">
+        <div class="containerr">
+            <script src="../Header/headjs.js"></script>
+            <h1 class="logo"><a href="index.php">VoteSphere</a></h1>
+            <ul>
+                <li><a href="index.php">Home</a></li>
+                <li><a href="contact_us/contactUs.php">Contact</a></li>
+                <li><a href="add_vote/view_vote.php">Vote</a></li>
+                <li><a href="login.php">Login</a></li>
+            </ul>
+        </div>
+    </nav>
+   
     <div class="container">
         <h1>Edit Your Profile</h1>
 
@@ -168,11 +182,36 @@ body {
             <label for="email">Email:</label>
             <input type="email" id="email" name="email" value="<?php echo $user['email']; ?>" required>
 
-            <label for="email">Password:</label>
-            <input type="pass" id="email" name="password" value="<?php echo $user['password']; ?>" required>
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" value="<?php echo $user['password']; ?>" required>
 
             <button type="submit" class="btn">Save Changes</button>
         </form>
     </div>
+    <footer id="footer">
+        <div class="col col1">
+            <h3>VoteSphere</h3>
+            <p>Made with <span style="color: #BA6573;">❤</span> by Jux</p>
+            <div class="social">
+                <a href="" target="_blank" class="link"><img src="https://assets.codepen.io/9051928/codepen_1.png" alt=""></a>
+                <a href="" target="_blank" class="link"><img src="https://assets.codepen.io/9051928/x.png" alt=""></a>
+                <a href="" target="_blank" class="link"><img src="https://assets.codepen.io/9051928/youtube_1.png" alt=""></a>
+            </div>
+            <p style="color: #818181; font-size: smaller">2024 © All Rights Reserved</p>
+        </div>
+        <div class="col col2">
+            <p>About</p>
+            <p>Our mission</p>
+            <p>Privacy Policy</p>
+            <p>Terms of service</p>
+        </div>
+        <div class="col col3">
+            <p>Services</p>
+            <p>Products</p>
+            <p>Join our team</p>
+            <p>Partner with us</p>
+        </div>
+        <div class="backdrop"></div>
+    </footer>
 </body>
 </html>

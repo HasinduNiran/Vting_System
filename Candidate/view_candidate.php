@@ -25,22 +25,37 @@
             margin: 0;
             padding: 0;
         }
+        .edit-btn, .delete-btn {
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            padding: 8px 16px;
+            font-size: 16px;
+            cursor: pointer;
+            margin-right: 10px;
+            text-decoration: none; /* Remove default button underline */
+        }
+
+        .delete-btn {
+            background-color: #dc3545; /* Red color for delete button */
+        }
     </style>
 </head>
 <body>
-<header class="header">
-
-    <a href="#" class="logo">
-        <img src="../image/pngegg.png" alt="" width="150px" height="70px"> </a>
-
-    <nav class="navbar">
-        <a href="#">home</a>
-        <a href="#">Contact Us</a>
-    </nav>
-
-    <div id="menu-btn" class="fas fa-bars"></div>
-
-</header>
+<nav class="nav">
+        <link rel="stylesheet" href="../Header/headcss.css" />
+        <script src="../Header/headjs.js"></script>
+          <div class="containerr">
+            <h1 class="logo"><a href="index.php">One Shot Voting</a></h1>
+            <ul>
+              <li><a href="index.php">Home</a></li>
+              <li><a href="login.php">Login</a></li>
+              <li><a href="sign_up.php">Signup</a></li>
+        
+            </ul>
+          </div>
+        </nav>
     <div class="container">
         <div class="candidates">
         <?php
@@ -65,9 +80,9 @@
                 echo "<p><strong>Performance:</strong> " . htmlspecialchars($row['perfomance']) . "</p>"; // Sanitize output
                 
                 // Edit button
-                echo "<a href='update_candidate.php?id=" . $row['id'] . "'><button>Edit</button></a>";
+                echo "<a href='update_candidate.php?id=" . $row['id'] . "'><button class='edit-btn'>Edit</button></a>";
                 
-                echo "<a href='delete_candidate.php?id=" . $row['id'] . "'><button class=\"delete-btn\">Delete</button></a>";
+                echo "<a href='delete_candidate.php?id=" . $row['id'] . "'><button  class='delete-btn'>Delete</button></a>";
 
                
 
@@ -83,6 +98,7 @@
         ?>
         </div>
     </div>
+   
 </body>
 </html>
 

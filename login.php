@@ -29,6 +29,7 @@ if (isset($_POST['btnlogin'])) {
         $row = mysqli_fetch_assoc($select);
         // Store user's ID in session variable
         $_SESSION['user_id'] = $row['id'];
+        $_SESSION['email'] = $row['email'];
         // Redirect to dashboard page
         header('Location: dashboard.php');
         exit;
@@ -38,6 +39,7 @@ if (isset($_POST['btnlogin'])) {
     }
 }
 ?>
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -49,33 +51,51 @@ if (isset($_POST['btnlogin'])) {
     <link rel="stylesheet" href="css/homepage.css">
     <script src="https://kit.fontawesome.com/b3ca95fff7.js" crossorigin="anonymous"></script>
     <title>One shot/Login page</title>
-</head>
 <body>
+    <nav class="nav">
+        <link rel="stylesheet" href="Header/headcss.css" />
+        <script src="Header/headjs.js"></script>
+        <div class="containerr">
+            <h1 class="logo"><a href="index.php">One Shot Voting</a></h1>
+            <ul>
+              <li><a href="index.php">Home</a></li>
+              <li><a href="login.php">Login</a></li>
+              <li><a href="sign_up.php">Signup</a></li>
+        
+            </ul>
+          </div>
+        </nav>
+    <div class="contain">
 
-    <div class="fromebox">
-    <p class="errorbox"> <?php echo $Invalid?></p>
-    <h1 class="login">Log In</h1>
+        <p class="errorbox"> <?php echo $Invalid?></p>
+        <div class="login">
+            <form action="login.php" method="post">
+                <h1>Welcome Back!</h1>
+                <small>Login to your account and start connecting with the world. Your journey begins here.</small>
+                <label for="email">Email</label>
+                <input placeholder="Enter Email" type="email" name="user_email" id="">
+                <label for="pass">Password</label>
+                <input placeholder="Enter Password" type="password" name="user_password" id="firstpas">
+                <div class="mor">
+                    <input class="check" type="checkbox"><label for="check">Remember Me</label>
+                    <a href="">Forgot Password?</a>
+                </div>
+                <input class="log" type="submit" name="btnlogin" value="Login" id="">
 
-    <form class="form1" method="post" action="login.php">
+               
+            </form>
+        </div>
 
-            <div class="input">
-            <i class="fa-solid fa-envelope"></i>
-                <input type="email" placeholder="Enter E-mail" name="user_email">
-            </div>
-
-            
-            <div class="input">
-            <i class="fa-solid fa-lock"></i>
-                <input type="password" placeholder="Enter password" id="firstpas" name="user_password">
-            </div>
-
-            <button name="btnlogin">Log In</button>
-
-            <p class="p1">Don't have an account? <a class="click" href="Sign_up.php">Sign Up</a></P>
-
+        <div class="image">
+            <h1>New here? Sign up and unlock amazing features!</h1>
+            <!-- <button class="sign" href="sign_up.php">Sign Up</button> -->
+        </div>
 
     </div>
 
+    <script>
+      feather.replace()
+    </script>
+    
 </body>
-
 </html>

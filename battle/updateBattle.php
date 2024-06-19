@@ -15,9 +15,10 @@
         background-size: cover;
     }
 
-    .contact-form {
+    .contact {
         width: 90%;
-        max-width: 450px;
+        margin-top: 20%;
+        max-width: 4px;
         position: absolute;
         top: 50%; /* Adjust the vertical position of the form */
         left: 50%;
@@ -49,7 +50,6 @@
     button {
         margin: 10px 0;
         padding: 15px;
-        width: calc(100% - 20px); /* Adjust width to fit the container */
         background-color: rgb(61, 150, 202);
         border-style: none;
         border-radius: 20px;
@@ -64,16 +64,31 @@
         background-color: rgb(237, 237, 237);
     }
 
-    h1 {
+    h2 {
         text-align: center;
         text-decoration: underline;
-        margin-bottom: 20px;
+   margin-top: 10%;
+   
+        
     }
 </style>
 
 </head>
 <body>
-    <h1>Update Battle</h1>
+<nav class="nav">
+        <link rel="stylesheet" href="../Header/headcss.css" />
+        <script src="../Header/headjs.js"></script>
+        <div class="containerr">
+            <h1 class="logo"><a href="index.php">One Shot Voting</a></h1>
+            <ul>
+              <li><a href="index.php">Home</a></li>
+              <li><a href="login.php">Login</a></li>
+              <li><a href="sign_up.php">Signup</a></li>
+        
+            </ul>
+          </div>
+        </nav>
+    <h2>Update Battle</h2>
 
     <?php
     // Include your database connection script (e.g., dbh.php)
@@ -92,7 +107,7 @@
             $playersQuery = "SELECT name FROM candidate"; 
             $playersResult = mysqli_query($conn, $playersQuery);
 
-            echo '<form action="updateBattle.php" method="post" class="contact-form">
+            echo '<form action="updateBattle.php" method="post" class="contact">
                 <input type="hidden" name="battle_id" value="' . $row['id'] . '">
                 <div class="form-group">
                     <label for="name">Battle Name:</label>
@@ -162,6 +177,7 @@
         }
     }
     ?>
+  
 </body>
 
 </html>

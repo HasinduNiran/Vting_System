@@ -81,7 +81,7 @@
     <div class="containerr">
             <h1 class="logo"><a href="index.php">One Shot Voting</a></h1>
             <ul>
-              <li><a href="index.php">Home</a></li>
+              <li><a href="../dashboard.php">Home</a></li>
               <li><a href="login.php">Login</a></li>
               <li><a href="sign_up.php">Signup</a></li>
         
@@ -103,6 +103,8 @@
     <?php
     // Include your database connection script (e.g., dbh.php)
     include '../dbh.php';
+    session_start();
+    $email = $_SESSION['email']; // Fetch email from session
 
     // Check if the 'id' parameter is set in the URL
     if(isset($_GET['id'])) {
@@ -110,7 +112,7 @@
         $id = mysqli_real_escape_string($conn, $_GET['id']);
 
         // Fetch data for the specific contact based on their ID
-        $query = "SELECT * FROM contact WHERE id = $id";
+        $query = "SELECT * FROM contact WHERE email = '$email'"; // Use single quotes around $email
         $result = mysqli_query($conn, $query);
 
         // Check if a record is found
@@ -122,7 +124,7 @@
             echo '<tr>';
             echo '<td>' . $row['id'] . '</td>';
             echo '<td>' . $row['name'] . '</td>';
-            echo '<td>' . $row['email'] . '</td>';
+            echo '<td><input type="text" value="' . $row['email'] . '" readonly></td>'; // Email field as read-only input
             echo '<td>' . $row['message'] . '</td>';
             echo '<td>
                     <a class="update-link" href="updatec.php?id=' . $row['id'] . '">Update</a> |
@@ -135,7 +137,7 @@
         }
     } else {
         // If 'id' parameter is not set, display all contacts
-        $query = "SELECT * FROM contact";
+        $query = "SELECT * FROM contact WHERE email = '$email'";
         $result = mysqli_query($conn, $query);
 
         while ($row = mysqli_fetch_assoc($result)) {
@@ -156,8 +158,8 @@
 <footer id="footer">
     <link rel="stylesheet" href="../footer/footcss.css" />
     <div class="col col1">
-        <h3>VoteSphere</h3>
-        <p>Made with <span style="color: #BA6573;">❤</span> by Jux</p>
+        <h3>One Shot Voting</h3>
+       
         <div class="social">
             <a href="" target="_blank" class="link"><img src="https://assets.codepen.io/9051928/codepen_1.png" alt="" /></a>
             <a href="" target="_blank" class="link"><img src="https://assets.codepen.io/9051928/x.png" alt="" /></a>

@@ -3,33 +3,92 @@
 <head>
     <title>Voting</title>
     <style>
-        /* CSS for Vote Box */
+       * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        .containerr {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background-color: #222;
+            transition: top 0.3s;
+            font-family: system-ui, sans-serif;
+        }
+
+        .nav .containerr {
+            display: flex;
+            justify-content: space-between;
+            padding: 20px 0;
+            transition: all 0.3s ease-in-out;
+        }
+
+        .nav ul {
+            display: flex;
+            align-items: center;
+            list-style: none;
+            justify-content: center;
+        }
+
+        .nav a {
+            text-decoration: none;
+            color: #fff;
+            padding: 7px 15px;
+            transition: all 0.3s ease-in-out;
+        }
+
+        .nav.active {
+            background-color: #fff;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+        }
+
+        .nav.active a {
+            color: #222;
+        }
+
+        .nav.active .containerr {
+            padding: 10px 0;
+        }
+
+        .nav a.current, .nav a:hover {
+            color: #D80032;
+            font-weight: bold;
+        }
+
+        /* Feedback form CSS */
         body {
-            background-image: url('../image/d.png');
+            background-image: url("../image/fullbg.jpg");
             background-size: cover;
             background-repeat: no-repeat;
             font-family: Arial, sans-serif;
-            background-color: #f4f4f4;
             margin: 0;
-            padding: 120px;
+            padding: 0;
         }
 
-        h1 {
+        h2 {
             text-align: center;
             margin: 20px 0;
-            background-color: white;
+            background-color: rgb(27, 22, 22);
             width: 60%;
             height: 50px;
             border-radius: 8px;
-            margin-left: auto;
-            margin-right: auto;
-            padding-top: 15px;
+            margin-left: 0%;
+            margin-top: 10%;
+       
         }
 
         .contact-form {
-            width: 60%;
-            max-width: 500px;
-            margin: 20px auto;
+            width: 70%;
+            max-width: 600px;
+           margin-top: 7%;
             background-color: #fff;
             padding: 20px;
             border-radius: 8px;
@@ -48,16 +107,12 @@
 
         input[type="text"],
         input[type="email"],
-        input[type="tel"],
-        input[type="date"],
-        textarea,
-        select {
+        textarea {
             width: 100%;
             padding: 10px;
             border: 1px solid #ddd;
             border-radius: 4px;
             font-size: 16px;
-            margin-bottom: 10px; /* Add margin bottom */
         }
 
         textarea {
@@ -72,32 +127,59 @@
             padding: 10px 20px;
             font-size: 16px;
             cursor: pointer;
-            width: 100%; /* Make button full width */
         }
 
         button[type="submit"]:hover {
             background-color: #0056b3;
         }
+       
+input[type="checkbox"]#vote {
+    margin-left: 10px;
+   
+    width: 20px; 
+    height: 20px; 
+    
+}
+
+
+input[type="date"]#voteDate {
+    
+   
+    padding: 8px;
+    border: 1px solid #ccc; 
+    border-radius: 4px; 
+}
+
+
+input[type="tel"]#telephone {
+ 
+    
+    padding: 8px; 
+    border: 1px solid #ccc; 
+    border-radius: 4px;
+}
+
 
     </style>
 </head>
 <body>
-<header class="header">
-<link rel="stylesheet" href="../css/style.css">
-    <a href="#" class="logo">
-        <img src="../image/pngegg.png" alt="" width="150px" height="70px"> </a>
-
-    <nav class="navbar">
-        <a href="#">home</a>
-        <a href="#">Contact Us</a>
-    </nav>
-
-    <div id="menu-btn" class="fas fa-bars"></div>
-</header>
+<nav class="nav">
+        <link rel="stylesheet" href="../Header/header.html" />
+        <script src="../Header/headjs.js"></script>
+        <div class="containerr">
+            <h1 class="logo"><a href="index.php">One Shot Voting</a></h1>
+            <ul>
+              <li><a href="index.php">Home</a></li>
+              <li><a href="login.php">Login</a></li>
+              <li><a href="sign_up.php">Signup</a></li>
+        
+            </ul>
+          </div>
+        </nav>
     
 
     <form action="add_vote.php" method="post" class="contact-form">
-    <h1>Add New Vote</h1>
+    <h2>Add New Vote</h2>
         <label for="voter">Voter:</label>
         <input type="text" id="voter" name="voter" required>
 
@@ -128,6 +210,34 @@
 
         <button type="submit" name="submit">Add Vote</button>
     </form>
+    
+<footer id="footer">
+  <link rel="stylesheet" href="../footer/footcss.css" />
+    
+    <div class="col col1">
+      <h3>VoteSphere</h3>
+      <p>Made with <span style="color: #BA6573;">❤</span> by Jux</p>
+      <div class="social">
+        <a href="" target="_blank" class="link"><img src="https://assets.codepen.io/9051928/codepen_1.png" alt="" /></a>
+        <a href="" target="_blank" class="link"><img src="https://assets.codepen.io/9051928/x.png" alt="" /></a>
+        <a href="" target="_blank" class="link"><img src="https://assets.codepen.io/9051928/youtube_1.png" alt="" /></a>
+      </div>
+      <p style="color: #818181; font-size: smaller">2024 © All Rights Reserved</p>
+    </div>
+    <div class="col col2">
+      <p>About</p>
+      <p>Our mission</p>
+      <p>Privacy Policy</p>
+      <p>Terms of service</p>
+    </div>
+    <div class="col col3">
+      <p>Services</p>
+      <p>Products</p>
+      <p>Join our team</p>
+      <p>Partner with us</p>
+    </div>
+    <div class="backdrop"></div>
+  </footer>
 </body>
 </html>
 <?php
@@ -156,7 +266,7 @@ if (isset($_POST['submit'])) {
         $stmt = $conn->prepare($sql);
         $stmt->bind_param("ssssssi", $voter, $candidate, $voteDate, $telephone, $comment, $city, $vote);
 
-        // Execute the statement
+    
         // Execute the statement
 if ($stmt->execute()) {
     echo "Vote added successfully!";

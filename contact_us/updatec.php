@@ -12,15 +12,18 @@
 
 body {
     font-family: Arial, sans-serif;
-    background-color: #f4f4f4;
-    margin: 0;
-    padding: 0;
+    background-image: url('../image/fullbg.jpg');
+    background-size: cover;
+    background-repeat:no-repeat;
+    background-position: center;
+    
 }
 
-h1 {
+h2 {
     text-align: center;
     margin: 20px 0;
     color: #333;
+    margin-top: 10%;
 }
 
 form {
@@ -31,6 +34,7 @@ form {
     padding: 20px;
     border-radius: 8px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    
 }
 
 .form-group {
@@ -73,16 +77,26 @@ button[type="submit"]:hover {
 }
 
 /* Optional: Add a background image or texture */
-body {
-    background-image: url('3.jpg');
-    background-size: cover;
-    background-repeat: no-repeat;
-}
+
 
     </style>
 </head>
 <body>
-    <h1>Update Contact</h1>
+<nav class="nav">
+        <link rel="stylesheet" href="../Header/headcss.css?v=1" />
+        <script src="../Header/headjs.js"></script>
+        <div class="containerr">
+            <h1 class="logo"><a href="index.php">One Shot Voting</a></h1>
+            <ul>
+              <li><a href="index.php">Home</a></li>
+              <li><a href="login.php">Login</a></li>
+              <li><a href="sign_up.php">Signup</a></li>
+        
+            </ul>
+          </div>
+        </nav>
+       
+    <h2>Update Contact</h2>
 
     <?php
     // Include your database connection script (e.g., dbh.php)
@@ -123,6 +137,33 @@ body {
         }
     }
     ?>
+     <footer id="footer">
+  <link rel="stylesheet" href="../footer/footcss.css" />
+    
+    <div class="col col1">
+      <h3>VoteSphere</h3>
+      <p>Made with <span style="color: #BA6573;">❤</span> by Jux</p>
+      <div class="social">
+        <a href="" target="_blank" class="link"><img src="https://assets.codepen.io/9051928/codepen_1.png" alt="" /></a>
+        <a href="" target="_blank" class="link"><img src="https://assets.codepen.io/9051928/x.png" alt="" /></a>
+        <a href="" target="_blank" class="link"><img src="https://assets.codepen.io/9051928/youtube_1.png" alt="" /></a>
+      </div>
+      <p style="color: #818181; font-size: smaller">2024 © All Rights Reserved</p>
+    </div>
+    <div class="col col2">
+      <p>About</p>
+      <p>Our mission</p>
+      <p>Privacy Policy</p>
+      <p>Terms of service</p>
+    </div>
+    <div class="col col3">
+      <p>Services</p>
+      <p>Products</p>
+      <p>Join our team</p>
+      <p>Partner with us</p>
+    </div>
+    <div class="backdrop"></div>
+  </footer>
 </body>
 </html>
 
